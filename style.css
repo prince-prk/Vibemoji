@@ -14,9 +14,9 @@ body {
         margin-right: 0.6rem;
     }
 
-    .hid1 {
+    /* .hid1 {
         display: none;
-    }
+    } */
 }
 
 @media screen and (max-width: 1050px) and (min-width:1008px) {
@@ -29,9 +29,10 @@ body {
         margin-right: 0.1rem !important;
     }
 
-    .hid1 {
+    /* .hid1 {
         display: none;
-    }
+    } */
+
 }
 
 @media screen and (max-width: 1007px) and (min-width:965px) {
@@ -44,9 +45,9 @@ body {
         margin-left: -6rem !important;
     }
 
-    .hid1 {
+    /* .hid1 {
         display: none;
-    }
+    } */
 }
 
 @media screen and (max-width: 964px) and (min-width:872px) {
@@ -55,10 +56,10 @@ body {
         margin-right: 1.8rem;
     }
 
-    .hid1,
+    /* .hid1,
     .hid2 {
         display: none;
-    }
+    } */
 }
 
 @media screen and (max-width: 871px) and (min-width:813px) {
@@ -67,10 +68,10 @@ body {
         margin-right: 1rem;
     }
 
-    .hid1,
+    /* .hid1,
     .hid2 {
         display: none;
-    }
+    } */
 }
 
 @media screen and (max-width: 810px) and (min-width:694px) {
@@ -83,9 +84,9 @@ body {
         display: none;
     }
 
-    .hid1 {
+    /* .hid1 {
         display: none;
-    }
+    } */
 }
 
 @media screen and (max-width: 693px) and (min-width:582px) {
@@ -120,6 +121,11 @@ body {
     #sr {
         display: none;
     }
+    article{
+        margin-left: 0.6rem !important;
+        margin-right: 0.6rem  !important;
+        margin-bottom: 2rem !important;
+    }
 }
 
 @media screen and (max-width: 543px) and (min-width:412px) {
@@ -136,21 +142,36 @@ body {
     #sr {
         display: none;
     }
+    .top-list{
+        margin-left: 0.65rem !important;
+        margin-right: 0.7rem  !important;
+        margin-bottom: 2rem !important;
+    }
 }
 
 @media screen and (max-width: 412px) and (min-width:364px) {
 
     .play {
-        margin-right: 0rem !important;
+        margin-right: -0.2rem !important;
     }
 
     .insta {
         display: none;
     }
-
+    /* #sign{
+        width: 100% !important;
+    } */
     .hid1,
     #sr {
         display: none;
+    }
+    .example{
+        margin-right: 0rem !important;
+    }
+    .top-list{
+        margin-left: 0.65rem !important;
+        margin-right: 0.65rem  !important;
+        margin-bottom: 1.2rem !important;
     }
 }
 
@@ -159,8 +180,11 @@ body {
         margin-right: 9.6rem !important;
     }
 
+    article{
+        margin-left: 6rem !important;
+    }
     .top-list {
-        margin-left: 2.8rem !important;
+        margin-left: 3rem ;
     }
 
     .play {
@@ -175,7 +199,7 @@ body {
     .insta {
         display: none;
     }
-
+    
 }
 
 @media screen and (max-width: 326.9px) and (min-width:150px) {
@@ -303,20 +327,10 @@ a{
 }
 
 
-.aside-content {
-    height: 7.3rem;
-    margin-bottom: 1rem;
-    width: 88%;
-    background-color: #242424;
-    padding: 0.4em 0.6rem 1rem 1.5rem;
-    overflow: auto;
-    border-radius: 8px;
-
-}
 
 .Lib {
     background-color: #121212;
-    height: 23.6rem;     
+    height: 23rem;     
     /* prince */
     padding: 0.3rem;
     border-radius: 8px;
@@ -489,16 +503,44 @@ a{
     color: white;
     transform: scale(1.05);
 }
-
-#sign {
-    width: 15.8rem;
-    display: flex;
+article audio{
+    position: relative;
+    display: none;
 }
-
+#sign {
+    margin-right: 1rem;
+    
+    display: flex;
+    color: white;
+}
+#searchTerm{
+    color: white;
+    font-weight: 700;
+    
+    width: 90%;
+    height: 1.6rem;
+    padding-left: 0.1rem !important;
+    background-color: #121212;
+    border: 0.1rem solid #3c3c3c;
+    border-radius: 25px;
+}
+#searchTerm:active{
+    border: 0.1rem solid #242323;
+}
+#searchTermBtn{
+    color:white;
+    font-size: 1rem;
+    background:transparent;
+    border: none;
+}
+#songs{
+    display: flex;
+    flex-wrap:wrap;
+}
 .songs {
     margin-top: 0.1rem;
     background-color: #1D1D1D;
-    padding-right: 1rem;
+    /* padding-right: 1rem; */
 }
 
 #spotify {
@@ -513,17 +555,22 @@ a{
     text-decoration: underline;
 }
 
-.top-list img {
+article{
+    margin-top: 1.5rem;
+    margin-left: 0.8rem !important;
+    margin-right: 0.8rem !important;
+    margin-bottom: 1.5rem;
+}
+.top-list img{
     margin-top: 1rem;
     width: 8.95rem;
     height: 9.1rem;
 }
 
 
-
 #spotify-playlist {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     margin-top: 1.2rem;
     flex-wrap: wrap;
 }
@@ -543,7 +590,7 @@ a{
     text-decoration: underline;
 }
 
-.top-list {
+.top-list{
     width: 10rem;
     height: 17rem;
     background-color: #161616;
@@ -555,6 +602,12 @@ a{
     z-index: 3;
 
 }
+article{
+    margin-left: 0.46rem ;
+    min-height: 18rem !important;
+    margin-right: 0.43rem  ;
+    margin-bottom: 2rem !important;
+}
 
 .top-list:hover {
     background-color: #292929;
@@ -564,10 +617,12 @@ a{
 
 
 
-.heading {
+.heading  {
     margin-top: 0.9rem;
 }
-
+article h4{
+    margin-top: -0.17rem;
+}
 .play {
     background-color: black;
     height: 2.86rem;
@@ -584,7 +639,7 @@ a{
     z-index: 4;
 }
 
-.sub-heading {
+.sub-heading , article p {
     margin-top: 0.4rem;
     line-height: 1.4rem;
     color: gray;
@@ -663,15 +718,15 @@ a{
     justify-content: center !important;
 }
 
-.play-icon {
+#play-icon {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
-.play-icon i {
+#play-icon i {
     font-size: 1.3em;
-    color: gray;
+    color: rgb(168, 166, 166);
     margin-left: 1rem;
 }
 
@@ -680,7 +735,7 @@ a{
     color: white;
 }
 
-.play-icon i:hover {
+#play-icon i:hover {
     transform: scale(1.08);
     color: white;
 }
