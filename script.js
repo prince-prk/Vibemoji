@@ -1,5 +1,5 @@
 let term = '';
-console.log("prince")
+console.log("Made with love by Prince")
 let totalsong = [
     
 ]
@@ -44,13 +44,113 @@ const playsong = document.getElementById('play-song');
 const playaudio = document.getElementById('play-audio'),
 // audioSource = document.createElement('source'),
 playimg = document.getElementById('play-img');
-let prevPlayesSong=[
-    {song: 'Sooraj Dooba Hain (From "Roy")', img: 'https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2d/11/b9/2d11b994-b4fa-19eb-953d-70b472165e95/8903431566911_cover.jpg/100x100bb.jpg', audio: 'https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/0b/c0/8c/0bc08c58-274a-67d6-cab5-e5c72d1f1f34/mzaf_2846157791679155895.plus.aac.p.m4a'}
+var defaultsongs=true;
+let spotify=[
+    {topic:"Spotify Playlists",data:[
+{song: "Today's Top Hits", img: './img/img1.jfif', subheading:'Peggu Gou is on top of the Hottest 50! '}
 ,
+{song: 'RapCaviar', img: './img/img2.jfif', subheading:'New Songs from &nbsp; Quavo, Polo G and Li...'}
+, 
+{song: 'All Out 2010', img: './img/img3.jfif', subheading:"The biggest songs of the 2010s."}
+,{ 
+song: "Rock Classic",img: "./img/img4.jfif",subheading:"Rock legends & epic songs that continue t..."
+},
+{song: "Chill Hits", img: './img/img5.jfif', subheading:'Kick back to the best new and recent chill...'}
+
+    ]
+    },
+    {topic:"Focus",data:[
+        {song: "Peaceful Plane", img: './img/img6.jfif', subheading:'Peaceful plano to help you slow down... '}
+        ,
+        {song: 'Deep Focus', img: './img/img7.jfif', subheading:'keep calm and focus with amblent and...'}
+        , 
+        {song: 'Instrumental Study', img: './img/img8.jfif', subheading:"Focus with soft study music in the..."}
+        ,{ 
+        song: "Focus Flow",img: "./img/img9.jfif",subheading:"Uptempo Instrumental hip hop beats."
+        },
+        {song: "Beats to think to", img: './img/img10.jfif', subheading:'Focus with deep techno and tech...'}
+        
+            ]
+    },
+    {topic:"Sound of India",data:[
+        {song: "The Sound of Mu...", img: './img/img11.jfif', subheading:'The songs that define, unite and distinguish... '}
+        ,
+        {song: 'The Sound of Del...', img: './img/img12.jfif', subheading:'The songs that define, unite and distinguish...'}
+        , 
+        {song: 'The Sound of Ben...', img: './img/img13.jfif', subheading:"The songs that define, unite and distinguish..."}
+        ,{ 
+        song: "The Sound of Ch...",img: "./img/img14.jfif",subheading:"The songs that define, unite and distinguish..."
+        },
+        {song: "The Sound of Hy...", img: './img/img15.jfif', subheading:'The songs that define, unite and distinguish...'}
+        
+            ]
+    },
+    {topic:"Prince Playlists",data:[
+        {song: "Songs of Lord Shiva", img: './img/img16.jfif', subheading:'Compilation by Various Artists... '}
+        ,
+        {song: 'Ganpati Bappa Moreya', img: './img/img17.jfif', subheading:'Sweet songs of devotion to praise...'}
+        , 
+        {song: 'Mata Ka Darbaar', img: './img/img18.jfif', subheading:"Worship the Goddess &nbsp; of love and devotion..."}
+        ,{ 
+        song: "Shri Rama Jai Rama",img: "./img/img19.jfif",subheading:"Jai Sita Ramayya!"
+        },
+        {song: "Lord Hanuman Devotional Songs", img: './img/img20.jfif', subheading:'Album by Kumar Vishu...'}
+        
+            ]
+    },
+
+]
+function start(){
+        defaultsongs=true;
+        while (songs.firstChild) {
+            songs.removeChild(songs.firstChild);
+        }
+    spotify.map( topic => {
+    const div = document.createElement("div");
+    div.innerHTML=`<div style="font-size:1.7rem;">${topic.topic}</div>`
+    div.style.cssText="width:100%; margin-top:2rem; margin-left:1.5rem"
+    // div.style.marginTop="5rem";
+    
+    songs.appendChild(div);
+    topic.data.map(data => 
+    {
+    const article = document.createElement("article"),
+    artists = document.createElement("p"),
+    song = document.createElement("h4"),
+    img = document.createElement("img");
+
+    song.style.marginTop = "0.7rem";
+
+    article.classList.add("top-list");
+    article.classList.add("mainSong");
+    artists.innerHTML = data.subheading;
+    song.innerHTML = data.song;
+    img.src = data.img;
+
+    article.appendChild(img);
+    article.appendChild(song);
+    article.appendChild(artists);
+    // prince kosta is great person
+    songs.appendChild(article);
+    songs.style.justifyContent = "space-evenly";
+})
+}
+)
+for(let i=0;i<child.length;i++){
+    child[i].addEventListener('click', event => {
+        // defaultsongs=true;
+        if(child[i].childNodes[1].innerText)term=child[i].childNodes[1].innerText;
+        updateTerm();
+    
+})}
+}
+start();
+let prevPlayesSong=[
+
 ];
 playimg.style.height = "3.8rem";
 playimg.style.width = "3.8rem";
-next.style.marginLeft="-1.4rem"
+next.style.marginLeft="-1.1rem"
 next.style.marginRight="1rem"
 prev.style.marginLeft="0.7rem"
 prev.style.marginRight="0.7rem"
@@ -80,7 +180,6 @@ playaudio.src = tempSong[k].audio;
 // audioSource.src = totalsong[k].audio;
 playimg.src = tempSong[k].img;
 
-console.log(audio.length);
 for (let i = 0; i < audio.length; i++) {
     if (audio[k] != audio[i]) audio[i].pause();
     
@@ -111,7 +210,6 @@ playaudio.src = prevPlayesSong[k].audio;
 // audioSource.src = totalsong[k].audio;
 playimg.src = prevPlayesSong[k].img;
 
-console.log(audio.length);
 for (let i = 0; i < audio.length; i++) {
     if (audio[k] != audio[i]) audio[i].pause();
     
@@ -134,17 +232,29 @@ next.addEventListener("click",() => {
     else playNextSong(defaultsong,currsong);
   },
   true
-);
+  );
+
+playaudio.addEventListener('ended',() => {
+    if (searchBtnClicked){
+        playNextSong(totalsong,currsongD);
+        currsong=0;
+    }
+    else playNextSong(defaultsong,currsong);
+});
+
+
 const updateTerm = () => {
-    term = document.getElementById('searchTerm').value;
+    if(defaultsongs!=true)term = document.getElementById('searchTerm').value;
     if (!term || term === '') {
         alert('Please enter a seach term');
     } else {
         const url = `https://itunes.apple.com/search?term=${term}`;
+        term=term.toUpperCase();
         const songContainer = document.getElementById('songs');
         while (songContainer.firstChild) {
             songContainer.removeChild(songContainer.firstChild);
         }
+        
         fetch(url)
             .then((Response) => Response.json())
             .then((data) => {
@@ -155,6 +265,16 @@ const updateTerm = () => {
                 heading.style.marginBottom="1rem";
                 // songs.appendChild(heading);
                 const artists = data.results;
+            //     if(defaultsongs==true){
+            //         const mainHeading = document.createElement("div");
+            //     mainHeading.innerHTML=`<div style="font-size:1.7rem;">${term}</div>`
+            //     mainHeading.style.cssText="width:100%; margin-top:2rem; margin-left:1.5rem"
+            //     songContainer.appendChild(mainHeading)
+            // }
+                    // div.style.marginTop="5rem";
+                    totalsong=[
+                        
+                    ]
                 return artists.map(result => {
                     const article = document.createElement('article'),
                     artists = document.createElement('p'),
@@ -162,14 +282,19 @@ const updateTerm = () => {
                     img = document.createElement('img'),
                     audio = document.createElement('audio'),
                     audioSource = document.createElement('source')
+
+                    song.style.marginTop="0.7rem";
                     
                     article.classList.add("top-list");
                     article.classList.add("temp");
-                    artists.innerHTML = result.artistName;
-                    song.innerHTML = result.trackName;
+                    if(result.artistName.length<20)artists.innerHTML = result.artistName;
+                    else artists.innerText= result.artistName.substring(0,19)+"..."
+                    if(result.trackName.length<35)song.innerHTML = result.trackName;
+                    else song.innerText= result.trackName.substring(0,34)+"..."
                     img.src = result.artworkUrl100;
                     audioSource.src = result.previewUrl;
                     audio.controls = true;
+                    
                     
                     article.appendChild(img);
                     article.appendChild(song);
@@ -178,7 +303,13 @@ const updateTerm = () => {
                     article.appendChild(audio);
                     audio.appendChild(audioSource);
                     // prince kosta is great person 
+                    
                     songContainer.appendChild(article);
+                    const main=document.getElementById("songs");
+                    main.style.display="flex";
+                    main.style.flex="wrap !important";
+                    songContainer.style.display="flex";
+                    songContainer.style.flex="wrap";
                     songContainer.style.justifyContent="space-evenly";
                     
                     totalsong.push({song:result.trackName,img:result.artworkUrl100,audio:result.previewUrl});
@@ -189,8 +320,8 @@ const updateTerm = () => {
                 for(let i=0;i<child.length;i++){
                     child[i].addEventListener('click', event => {
                         // while (play.firstChild) {
-                        //     play.removeChild(play.firstChild);
-                        // }
+                            //     play.removeChild(play.firstChild);
+                            // }
                         currsong=i;
                         console.log("event");
                         console.log(child[i].children[1].innerHTML)
@@ -204,7 +335,11 @@ const updateTerm = () => {
                         playimg.src = child[i].childNodes[0].getAttribute('src')
                         // const icon2 = document.createElement('i');
                         playaudio.play();
-                        
+                        prevPlayesSong.push({
+                            song:playsong.innerText,
+                            img:playimg.src,
+                            audio:playaudio.src
+                        })
                         playimg.style.height="3.8rem"
                         playimg.style.aspectRatio="1:1"
                         
@@ -227,21 +362,36 @@ const updateTerm = () => {
                     }
                 }, true)
                 // icon2.addEventListener('click',() =>{
-                //     playNextSong(totalsong);
-                // },true)
-            })
-            .catch(error => { 
-                window.alert("Enter full name or songs not found")
-                console.log('Request failed:', error)})
+                    //     playNextSong(totalsong);
+                    // },true)
+                })
+                .catch(error => { 
+                    window.alert("Enter full name or songs not found")
+                    console.log('Request failed:', error)})
+                    
+                }
+            }
+
             
-    }
-}
+            const searchBtn = document.getElementById('searchTermBtn');
+            const smallSearch=document.getElementById('search');
+            smallSearch.addEventListener('click',()=>{
+                const searchTerm=document.getElementById('searchTerm')
+                searchTerm.style.border="0.2rem solid white"
+                setTimeout(()=>{
+                    searchTerm.style.border="0.1rem solid #3c3c3c"
+                },2000)
 
-const searchBtn = document.getElementById('searchTermBtn');
-searchBtn.addEventListener('click', updateTerm)
-
-const heading =document.createElement('h4')
-heading.innerText=document.getElementById('searchTerm').value;
-songs.appendChild(heading);
+            })
+            function smallSearchClicked(){
+            }
+            searchBtn.addEventListener('click', () =>{
+                defaultsongs=false;
+                 updateTerm();
+                })
+            
+            const heading =document.createElement('h4')
+            heading.innerText=document.getElementById('searchTerm').value;
+            songs.appendChild(heading);
 // let arry = Array.from(songs);
 

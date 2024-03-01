@@ -4,20 +4,32 @@ body {
     color: white;
     font-weight: 600;
     font-size: 0.95rem;
-    font-family: var(--font-family, CircularSp, CircularSp-Arab, CircularSp-Hebr, CircularSp-Cyrl, CircularSp-Grek, CircularSp-Deva, var(--fallback-fonts, sans-serif));
+    font-family: "Josefin Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
 }
 
 
-@media screen and (max-width: 1300px) and (min-width:1051px) {
+
+@media screen and (max-width: 2129px) and (min-width:1051px) {
 
     .play {
         margin-right: 0.6rem;
     }
+    #searchTerm{
+        min-width: 20rem !important;
+    }
 
     /* .hid1 {
         display: none;
-    } */
-}
+    }*/
+    
+        .Lib{
+            height:23rem !important;
+        }
+    
+    
+} 
 
 @media screen and (max-width: 1050px) and (min-width:1008px) {
 
@@ -32,6 +44,10 @@ body {
     /* .hid1 {
         display: none;
     } */
+    .searchTerm{
+        min-width: 25rem !important;
+    }
+    
 
 }
 
@@ -48,6 +64,10 @@ body {
     /* .hid1 {
         display: none;
     } */
+    .searchTerm{
+        width: 25rem !important;
+    }
+    
 }
 
 @media screen and (max-width: 964px) and (min-width:872px) {
@@ -60,6 +80,10 @@ body {
     .hid2 {
         display: none;
     } */
+    .searchTerm{
+        width: 20rem !important;
+    }
+    
 }
 
 @media screen and (max-width: 871px) and (min-width:813px) {
@@ -72,6 +96,11 @@ body {
     .hid2 {
         display: none;
     } */
+    .searchTerm{
+        width: 20rem !important;
+    }
+    
+
 }
 
 @media screen and (max-width: 810px) and (min-width:694px) {
@@ -87,6 +116,9 @@ body {
     /* .hid1 {
         display: none;
     } */
+    .searchTerm{
+        width: 15rem !important;
+    }
 }
 
 @media screen and (max-width: 693px) and (min-width:582px) {
@@ -99,10 +131,11 @@ body {
         display: none;
     }
 
-    .hid1,
-    #sr,
-    .hid2 {
+    #sr{
         display: none;
+    }
+    .searchTerm{
+        width: 15rem !important;
     }
 }
 
@@ -116,8 +149,7 @@ body {
         display: none;
     }
 
-    .hid1,
-    .hid2,
+    
     #sr {
         display: none;
     }
@@ -125,6 +157,9 @@ body {
         margin-left: 0.6rem !important;
         margin-right: 0.6rem  !important;
         margin-bottom: 2rem !important;
+    }
+    .searchTerm{
+        width: 20rem !important;
     }
 }
 
@@ -138,7 +173,7 @@ body {
         display: none;
     }
 
-    .hid1,
+    
     #sr {
         display: none;
     }
@@ -146,6 +181,20 @@ body {
         margin-left: 0.65rem !important;
         margin-right: 0.7rem  !important;
         margin-bottom: 2rem !important;
+    }
+    #play-icon{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+    }
+    #play-icon img{
+        width: 2.2rem !important;
+        height: 2.2rem !important;
+    }
+    #play-icon audio{
+        width: 22rem !important;
+        height: 1.7rem !important;
     }
 }
 
@@ -158,10 +207,8 @@ body {
     .insta {
         display: none;
     }
-    /* #sign{
-        width: 100% !important;
-    } */
-    .hid1,
+    
+    
     #sr {
         display: none;
     }
@@ -172,6 +219,20 @@ body {
         margin-left: 0.65rem !important;
         margin-right: 0.65rem  !important;
         margin-bottom: 1.2rem !important;
+    }
+    #play-icon{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+    }
+    #play-icon img{
+        width: 2.2rem !important;
+        height: 2.2rem !important;
+    }
+    #play-icon audio{
+        width: 22rem !important;
+        height: 1.7rem !important;
     }
 }
 
@@ -191,7 +252,7 @@ body {
         display: none;
     }
 
-    .hid1,
+    
     #sr {
         display: none;
     }
@@ -199,7 +260,20 @@ body {
     .insta {
         display: none;
     }
-    
+    #play-icon{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+    }
+    #play-icon img{
+        width: 2.2rem !important;
+        height: 2.2rem !important;
+    }
+    #play-icon audio{
+        width: 22rem !important;
+        height: 1.7rem !important;
+    }
 }
 
 @media screen and (max-width: 326.9px) and (min-width:150px) {
@@ -219,16 +293,16 @@ body {
         font-size: 50px;
 
     }
-
+    #sign{
+        width: 100% !important;
+        margin-right:0;
+    }
+    
     .insta {
         display: none;
     }
 
-    .hid1,
-    .hid2,
-    .hid3,
-    #sr,
-    .hid4 {
+    #sr {
         display: none;
     }
 
@@ -248,6 +322,20 @@ body {
 
     #but2 {
         display: none;
+    }
+    #play-icon{
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 1rem;
+        margin-top: 0.5rem;
+    }
+    #play-icon img{
+        width: 2.2rem !important;
+        height: 2.2rem !important;
+    }
+    #play-icon audio{
+        width: 22rem !important;
+        height: 1.7rem !important;
     }
 }
 
@@ -272,14 +360,13 @@ a{
 }
 
 .page-content {
-    height: 100vh;
+    display: flex;
+    flex-direction: column;
     margin: 0.1rem;
     padding: 0.5rem !important;
 }
 
 #sr {
-
-    height: auto;
     width: 22.4%;
     min-width: 220px;
 
@@ -330,10 +417,15 @@ a{
 
 .Lib {
     background-color: #121212;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     height: 23rem;     
     /* prince */
     padding: 0.3rem;
     border-radius: 8px;
+    margin-bottom: 5rem;
 }
 
 
@@ -430,7 +522,6 @@ a{
 
 #main {
     flex: 1;
-    display: block;
     color: white;
     overflow: auto;
     margin-top: 0.61rem;
@@ -509,33 +600,35 @@ article audio{
 }
 #sign {
     margin-right: 1rem;
-    
+    position: absolute;
+    right: 0;
     display: flex;
     color: white;
 }
 #searchTerm{
     color: white;
-    font-weight: 700;
-    
+    font-weight: 500;
+    font-size: 1.1rem;
     width: 90%;
-    height: 1.6rem;
-    padding-left: 0.1rem !important;
+    height: 2.5rem;
+    padding-left: 1rem !important;
     background-color: #121212;
     border: 0.1rem solid #3c3c3c;
     border-radius: 25px;
+    right: 0;
 }
 #searchTerm:active{
     border: 0.1rem solid #242323;
 }
 #searchTermBtn{
+    font-size: 1.4rem;
     color:white;
-    font-size: 1rem;
     background:transparent;
     border: none;
 }
 #songs{
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: wrap;
 }
 .songs {
     margin-top: 0.1rem;
@@ -726,7 +819,7 @@ article h4{
 
 #play-icon i {
     font-size: 1.3em;
-    color: rgb(168, 166, 166);
+    color: rgb(215, 214, 214);
     margin-left: 1rem;
 }
 
