@@ -45,6 +45,7 @@ const playaudio = document.getElementById('play-audio'),
 // audioSource = document.createElement('source'),
 playimg = document.getElementById('play-img');
 var defaultsongs=true;
+let loader=document.getElementById("loader");
 let spotify=[
     {topic:"Spotify Playlists",data:[
 {song: "Today's Top Hits", img: './img/img1.jfif', subheading:'Peggu Gou is on top of the Hottest 50! '}
@@ -100,6 +101,10 @@ song: "Rock Classic",img: "./img/img4.jfif",subheading:"Rock legends & epic song
     },
 
 ]
+let prevPlayesSong=[
+
+];
+let a=0;
 function start(){
         defaultsongs=true;
         while (songs.firstChild) {
@@ -108,7 +113,7 @@ function start(){
     spotify.map( topic => {
     const div = document.createElement("div");
     div.innerHTML=`<div style="font-size:1.7rem;">${topic.topic}</div>`
-    div.style.cssText="width:100%; margin-top:2rem; margin-left:1.5rem"
+    div.setAttribute('id','spotify')
     // div.style.marginTop="5rem";
     
     songs.appendChild(div);
@@ -140,14 +145,14 @@ for(let i=0;i<child.length;i++){
     child[i].addEventListener('click', event => {
         // defaultsongs=true;
         if(child[i].childNodes[1].innerText)term=child[i].childNodes[1].innerText;
+        loader.style.display="unset";
+        searchBtnClicked=true;
         updateTerm();
     
 })}
+a=prevPlayesSong.length-1;
 }
 start();
-let prevPlayesSong=[
-
-];
 playimg.style.height = "3.8rem";
 playimg.style.width = "3.8rem";
 next.style.marginLeft="-1.1rem"
@@ -164,14 +169,14 @@ play.style.cssText = "padding:1rem ;";
 const audio = document.getElementsByTagName("audio");
 let n=defaultsong.length;
 let searchBtnClicked=false,first=true;
-let m=0,a=0;
+let m=0;
 function playNextSong(tempSong,curr){
     curr.value = curr.value + 1;
     a=prevPlayesSong.length-1;
     let k = curr.value;
+    console.log(k);
     k = k % tempSong.length;
     curr.value=k;
-    console.log(curr.value);
     first=true;
     if (tempSong[k].song.length >= 15)
     playsong.innerHTML = tempSong[k].song.substring(0, 15) + "...";
@@ -190,6 +195,7 @@ prevPlayesSong.push({song:tempSong[k].song,img:tempSong[k].img,audio:tempSong[k]
     a=prevPlayesSong.length-1;
     playaudio.play();
 }
+var prevBtnPressed=false;
 function playPrevSong(){
     let k=prevPlayesSong.length-1;
     if(first){
@@ -202,6 +208,7 @@ function playPrevSong(){
         }
         a-=1;
     }
+    prevBtnPressed=true;
     first=false;
         if (prevPlayesSong[k].song.length >= 15)
     playsong.innerHTML = prevPlayesSong[k].song.substring(0, 15) + "...";
@@ -222,26 +229,67 @@ prev.addEventListener("click",() => {
     if(prevPlayesSong.length>=1){
         playPrevSong();
     }
+    else{
+        
+    }
 })
-const currsongD={value:0};
+let currsongD={value:0};
 next.addEventListener("click",() => {
     if (searchBtnClicked){
+        currsong.value=0;
         playNextSong(totalsong,currsongD);
-        currsong=0;
     }
-    else playNextSong(defaultsong,currsong);
+    else{
+        
+         playNextSong(defaultsong,currsong);
+    }
   },
   true
   );
 
 playaudio.addEventListener('ended',() => {
     if (searchBtnClicked){
+        currsong.value=0;
         playNextSong(totalsong,currsongD);
-        currsong=0;
     }
     else playNextSong(defaultsong,currsong);
 });
+let emojies=[
+    "Hindi Songs","Romantic Hindi Songs","Most Liked Songs","Sad Hindi Songs","Bhajan"
+]
+const funemoji= ()=> {
+    const emoji_container=document.getElementById("emoji-container");
+    const cut=document.getElementById("cross");
+    const emoji=document.getElementsByClassName("emoji");
+    emoji_container.style.display="flex";
+    for(let i=0;i<emoji.length;i++){
+        emoji[i].addEventListener('click',()=>{
+            term=emojies[i];
+            defaultsongs=true;
+            emoji_container.style.display="none";
+            loader.style.display="unset";
+            updateTerm();
+        })
+    }
+    cut.addEventListener('click',()=>{
+        emoji_container.style.display="none";
+    })
 
+}
+const emojiPicker=document.getElementById("emoimg");
+emojiPicker.addEventListener('click',funemoji);
+emojiPicker.addEventListener('mouseenter',() =>{
+    const emojiexplainer=document.getElementById("emoji-explainer");
+    emojiexplainer.style.display="unset"
+})
+emojiPicker.addEventListener("mouseleave",() =>{
+    const emojiexplainer=document.getElementById("emoji-explainer");
+    emojiexplainer.style.display="none"
+})
+document.getElementById("cross1").addEventListener("click",()=>{
+
+    document.getElementById("emojiPicker").style.display="none"
+})
 
 const updateTerm = () => {
     if(defaultsongs!=true)term = document.getElementById('searchTerm').value;
@@ -258,20 +306,23 @@ const updateTerm = () => {
         fetch(url)
             .then((Response) => Response.json())
             .then((data) => {
-                const songs = document.getElementById('id1');
-                const heading =document.createElement('div')
-                heading.innerText=document.getElementById('searchTerm').value;
-                heading.style.marginTop="1rem";
-                heading.style.marginBottom="1rem";
-                // songs.appendChild(heading);
+
                 const artists = data.results;
-            //     if(defaultsongs==true){
-            //         const mainHeading = document.createElement("div");
-            //     mainHeading.innerHTML=`<div style="font-size:1.7rem;">${term}</div>`
-            //     mainHeading.style.cssText="width:100%; margin-top:2rem; margin-left:1.5rem"
-            //     songContainer.appendChild(mainHeading)
-            // }
+                if(defaultsongs==true){
+                    const mainHeading = document.createElement("div");
+                mainHeading.innerHTML=`<div style="font-size:1.7rem;">${term}</div>`
+                songContainer.appendChild(mainHeading)
+                mainHeading.setAttribute("id",'spotify')
+            }
                     // div.style.marginTop="5rem";
+                    if(prevBtnPressed){
+                        if(prevPlayesSong.length-1!=a){
+                            console.log(prevPlayesSong.length);
+                            prevPlayesSong.splice(a+1);
+                            console.log(prevPlayesSong.length);
+                        }
+                    }
+                    prevBtnPressed=false;
                     totalsong=[
                         
                     ]
@@ -289,8 +340,9 @@ const updateTerm = () => {
                     article.classList.add("temp");
                     if(result.artistName.length<20)artists.innerHTML = result.artistName;
                     else artists.innerText= result.artistName.substring(0,19)+"..."
-                    if(result.trackName.length<35)song.innerHTML = result.trackName;
-                    else song.innerText= result.trackName.substring(0,34)+"..."
+                    // if(result.trackName.length<35)
+                    song.innerHTML = result.trackName;
+                    // else song.innerText= result.trackName.substring(0,34)+"..."
                     img.src = result.artworkUrl100;
                     audioSource.src = result.previewUrl;
                     audio.controls = true;
@@ -322,24 +374,45 @@ const updateTerm = () => {
                         // while (play.firstChild) {
                             //     play.removeChild(play.firstChild);
                             // }
-                        currsong=i;
-                        console.log("event");
-                        console.log(child[i].children[1].innerHTML)
-                       // const audio = document.getElementsByTagName('audio');
+                        currsongD.value=i;
+
+                        console.log(i);
+                        // const audio = document.getElementsByTagName('audio');
                         // play.innerHTML="";
                         if(child[i].children[1].innerHTML.length>=15)playsong.innerHTML = child[i].children[1].innerHTML.substring(0,15)+ "...";
                         else playsong.innerHTML = child[i].children[1].innerHTML
-                        playaudio.src = child[i].childNodes[3].childNodes[0].getAttribute('src');
+                        let cacheBuster=Date.now();
+                        playaudio.src = child[i].childNodes[3].childNodes[0].getAttribute('src')+"?timestamp="+cacheBuster;
                         playaudio.controls = true;
                         // const icon1 = document.createElement('i');
+                        console.log(playsong.innerText)
                         playimg.src = child[i].childNodes[0].getAttribute('src')
                         // const icon2 = document.createElement('i');
-                        playaudio.play();
-                        prevPlayesSong.push({
-                            song:playsong.innerText,
-                            img:playimg.src,
-                            audio:playaudio.src
+                        // try{
+                        //     playaudio.play();
+                        // }
+                        // catch (error){
+                        //     alert("Song is not Available")
+                        //     console.log("Na Ho Payenga: ",error)
+
+                        // }
+                        let temp=false;
+                        fetch(playaudio.src)
+                        .then(response => {
+                            if(response.ok){
+                                prevPlayesSong.push({
+                                    song:playsong.innerText,
+                                    img:playimg.src,
+                                    audio:playaudio.src
+                                })
+                                playaudio.play();
+                            }
+                            else{
+                                alert("Audio is not Available");
+                            }
                         })
+                        
+                        a=prevPlayesSong.length-1;
                         playimg.style.height="3.8rem"
                         playimg.style.aspectRatio="1:1"
                         
@@ -351,7 +424,7 @@ const updateTerm = () => {
                         play.style.cssText="padding:1rem ;"
                     }, true)
                 }
-                searchBtnClicked=true;
+                
                 document.addEventListener('play', event => {
                     // const audio = document.getElementsByTagName('audio');
                     
@@ -365,9 +438,17 @@ const updateTerm = () => {
                     //     playNextSong(totalsong);
                     // },true)
                 })
-                .catch(error => { 
-                    window.alert("Enter full name or songs not found")
-                    console.log('Request failed:', error)})
+                .then( ()=>{
+                    if(child.length===0){
+                        
+                        window.alert("Enter full name or songs not found")
+                        searchBtnClicked=false;
+                        start();
+                        
+                    }
+                    loader.style.display="none";
+
+                })
                     
                 }
             }
@@ -383,10 +464,12 @@ const updateTerm = () => {
                 },2000)
 
             })
-            function smallSearchClicked(){
-            }
+            // function smallSearchClicked(){
+            // }
             searchBtn.addEventListener('click', () =>{
+                searchBtnClicked=true;
                 defaultsongs=false;
+                loader.style.display="unset";
                  updateTerm();
                 })
             
