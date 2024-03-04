@@ -27,6 +27,9 @@ body {
         .Lib{
             height:23rem !important;
         }
+        #main{
+            height: 87vh !important;
+        }
     
     
 } 
@@ -47,7 +50,9 @@ body {
     .searchTerm{
         min-width: 25rem !important;
     }
-    
+    #main{
+        height: 92.5vh !important;
+    }
 
 }
 
@@ -67,6 +72,9 @@ body {
     .searchTerm{
         width: 25rem !important;
     }
+    #main{
+        height: 92.3vh !important;
+    }
     
 }
 
@@ -83,7 +91,9 @@ body {
     .searchTerm{
         width: 20rem !important;
     }
-    
+    #main{
+        height: 92.4vh !important;
+    }
     
 }
 
@@ -100,6 +110,9 @@ body {
     .searchTerm{
         width: 20rem !important;
     }
+    #main{
+        height: 91.8vh !important;
+    }
     
 
 }
@@ -110,8 +123,8 @@ body {
         margin-right: 3.3rem;
     }
 
-    .insta {
-        display: none;
+    #main{
+        height: 90.1vh !important;
     }
 
     /* .hid1 {
@@ -128,12 +141,23 @@ body {
         margin-right: 1rem;
     }
 
-    .insta {
-        display: none;
+    #sign{
+        width: 100% !important;
+        position: absolute;
+        right:0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    #sidebar{
+        display: unset !important;
     }
 
     #sr{
         display: none;
+    }
+    #sidebar{
+        display: unset !important;
     }
     .searchTerm{
         width: 15rem !important;
@@ -146,10 +170,17 @@ body {
         margin-right: 1rem;
     }
 
-    .insta {
-        display: none;
+    #sign{
+        width: 100% !important;
+        position: absolute;
+        right:0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-
+    #sidebar{
+        display: unset !important;
+    }
     
     #sr {
         display: none;
@@ -171,10 +202,17 @@ body {
         margin-right: 2.9rem;
     }
 
-    .insta {
-        display: none;
+    #sign{
+        width: 100% !important;
+        position: absolute;
+        right:0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-
+    #sidebar{
+        display: unset !important;
+    }
     
     #sr {
         display: none;
@@ -203,6 +241,9 @@ body {
         height: 2rem !important;
         /* right: rem !important; */
     }
+    #main{
+        height: 89vh !important;
+    }
    
 }
 
@@ -211,14 +252,27 @@ body {
     .play {
         margin-right: -0.2rem !important;
     }
+    #main{
+        height: 88.5vh !important;
+    }
 
-    .insta {
-        display: none;
+    #sign{
+        width: 100% !important;
+        margin-right:0;
+        position: absolute;
+        right:0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
     
     
     #sr {
         display: none;
+    }
+    
+    #sidebar{
+        display: unset !important;
     }
     .example{
         margin-right: 0rem !important;
@@ -247,6 +301,9 @@ body {
         height: 2rem !important;
         right: 1rem !important;
     }
+    /* .searchTerm{
+        width: 5rem !important;
+    } */
     
 }
 
@@ -270,10 +327,19 @@ body {
     #sr {
         display: none;
     }
-
-    .insta {
-        display: none;
+    #sidebar{
+        display: unset !important;
     }
+    #sign{
+        width: 100% !important;
+        margin-right:-1rem;
+        position: absolute;
+        right:0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
     #play-icon{
         display: flex;
         flex-wrap: wrap;
@@ -293,6 +359,7 @@ body {
         height: 2rem !important;
         right: 1rem !important;
     }
+
     
 }
 
@@ -316,11 +383,16 @@ body {
     #sign{
         width: 100% !important;
         margin-right:0;
+        position: absolute;
+        right:0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-    
-    .insta {
-        display: none;
+    #sidebar{
+        display: unset !important;
     }
+   
 
     #sr {
         display: none;
@@ -374,12 +446,17 @@ a{
 }
 
 .spotify1 img{
-    height: 1.5rem;
-    width: 5rem;
+    height: 1.7rem;
+    width: 1.7rem;
     margin-top: 1rem;
     margin-bottom: 0.1rem;
     margin-left: 0.5rem;
     pointer-events:fill;
+}
+
+.spotify1 span{
+    position: absolute;
+    margin-top: 1.44rem !important;
 }
 
 .page {
@@ -409,6 +486,8 @@ a{
 
 .example::-webkit-scrollbar {
     background-color: transparent;
+    display: none;
+    position: absolute;
     border-radius: 2px;
     width: 0.5rem !important;
     color: white;
@@ -445,12 +524,12 @@ a{
 
 
 .Lib {
+    flex: 1;
     background-color: #121212;
-    flex-grow: 1;
+    flex-grow: 2;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 23rem;     
     /* prince */
     padding: 0.3rem;
     border-radius: 8px;
@@ -482,12 +561,27 @@ a{
     font-weight: 100;
 }
 
-#left1 i {
-    font-size: 1.4em;
+#left1 i{
+    font-size: 1.2em;
     padding-right: 0.7rem;
 }
 
-.plus {
+#cutsidebar{
+    font-size: 1.6em;
+    color: #898989;
+    position: absolute;
+    right:0.4rem;
+    padding-top: 0.4rem;
+    padding-right: 0.4rem;
+    display: none;
+}
+#cutsidebar i:hover{
+    background-color: #ee3131;
+    border-radius: 50%;
+    
+}
+
+.plus,#plus1 {
     font-size: 1.1rem;
 }
 
@@ -497,7 +591,7 @@ a{
     justify-content: space-between;
 }
 
-#but {
+.but {
     height: 1.9rem;
     border: none;
     width: 8rem;
@@ -509,7 +603,7 @@ a{
     border-radius: 25px;
 }
 
-#but:hover {
+.but:hover {
     transform: scale(1.05);
     background-color: rgb(231, 230, 230);
     font-weight: 550;
@@ -552,17 +646,18 @@ a{
 #main {
     flex: 1;
     color: white;
+    flex-grow: 1;
     overflow: auto;
     margin-top: 0.61rem;
     margin-right: 0.58rem;
     border-radius: 8px;
     background-color: #1D1D1D;
-    height: 84.6vh;
     position: relative;
+    height: 85vh;
 }
 
 #main #emojiPicker{
-    background: linear-gradient(black ,rgb(50, 50, 50));
+    background: linear-gradient(#ee3131, #3847ed);
     padding: 1rem;
     border-radius: 50%;
     position: fixed;
@@ -575,7 +670,7 @@ a{
 }
 #main #cross1{
     position: absolute;
-    background: linear-gradient(black ,rgb(50, 50, 50));
+    background:#1D1D1D;
     padding: 0.2rem;
     border-radius: 50%;
     top: 0;
@@ -602,7 +697,7 @@ a{
     display: flex;
     position: sticky;
     flex-direction: row;
-    top: 0rem;
+    top: -0.15rem;
     justify-content: space-between;
     align-items: center;
     height: 4rem;
@@ -613,23 +708,24 @@ a{
     z-index: 5;
 }
 
-.apr {
+.apr,#nextbtn {
     display: flex;
     margin-left: 1.1rem;
 }
 
-.approw {
+.approw,#prevbtn,#nextbtn {
     height: 2rem;
     width: 2rem;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction:row;
     color: gray;
     margin-left: 0.4rem;
     font-size: 1.3em;
-    font-weight: 200;
     border-radius: 50%;
     background-color: rgb(10, 10, 10);
+    cursor: pointer;
 }
 
 #but2 {
@@ -667,17 +763,34 @@ article audio{
     display: none;
 }
 #sign {
-    margin-right: 1rem;
-    position: absolute;
-    right: 0;
     display: flex;
+    justify-content:space-between;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
     color: white;
+}
+#sign #span{
+    flex-grow: 1;
+    display: flex;
+    padding-left: 1rem;
+    justify-content: space-between;
+    flex-direction: row;
+    align-items:center;
+    
+}
+
+
+#sidebar{
+    margin-left: 1.5rem;
+    font-size: 1.5rem;
+    display: none;
 }
 #searchTerm{
     color: white;
     font-weight: 500;
     font-size: 1.1rem;
-    width: 90%;
+    width: 60%;
     height: 2.5rem;
     padding-left: 1rem !important;
     background-color: #121212;
@@ -689,6 +802,7 @@ article audio{
     border: 0.1rem solid #242323;
 }
 #searchTermBtn{
+    margin-right: 0.8rem;
     font-size: 1.4rem;
     color:white;
     background:transparent;
@@ -697,10 +811,13 @@ article audio{
 #songs{
     display: flex;
     flex-wrap: wrap;
+    min-height: 40vh;
+    justify-content: space-evenly;
 }
 .songs {
     margin-top: 0.1rem;
     background-color: #1D1D1D;
+    
     /* padding-right: 1rem; */
 }
 
@@ -723,6 +840,7 @@ article{
     margin-bottom: 1.5rem;
 }
 .top-list img{
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
     margin-top: 1rem;
     width: 8.95rem;
     height: 9.1rem;
@@ -748,7 +866,7 @@ article{
     cursor: pointer;
     width: 10rem;
     height: 17rem;
-    background-color: #161616;
+    background-color: #181717;
     padding-left: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;
@@ -765,7 +883,7 @@ article{
 }
 
 .top-list:hover {
-    background-color: #292929;
+    background-color: #2d2d2d;
     display: inline-block;
     z-index: 1;
 }
@@ -801,37 +919,91 @@ article h4{
     font-size: 0.9em;
 }
 
-.other-playlist {
-    margin-top: 2rem;
+#playlist{
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    gap: 1rem !important;
+    background-color: #242323;
+    max-height: 40%;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* #playlist::-webkit-scrollbar {
+    display: none;
+  } */
+  #playlist::-webkit-scrollbar {
+    background-color: transparent;
+    border-radius: 2px;
+    width: 0.3rem !important;
+    color: white;
+    scrollbar-width: 0rem;
+}
+
+#playlist::-webkit-scrollbar-thumb {
+    background: #393939;
+    border-radius: 9px;
+}
+
+.playPlaylist{
+    display: flex;
+    justify-content: space-between;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    align-items: center;
+    background-color: #070707a6;
+    width: 90% !important;
+    height: 4rem;
+    margin-top: 0.8rem;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.playPlaylist:hover{
+    background-color:#2d2d2d;
+}
+.playPlaylist audio{
+    display: none;
+}
+
+.playPlaylist img{
+    width: 2rem;
+    height: 2rem;
+}
+
+.playPlaylist p{
+    font-size: 0.8em;
+    color:#6a6a6a;
 }
 
 #info {
     background-color: #1D1D1D;
     display: flex;
     overflow: hidden;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-left: 0.8rem;
 }
 
 .company {
     margin-top: 4.6rem;
-
-    margin-left: 1rem;
+    text-align: center;
+    margin-left: 0.8rem;
 }
 
-.community {
-    margin-left: 1rem;
+.company ul{
+    padding-left: 0;
 }
 
 .company li {
     list-style: none;
     color: gray;
-    margin-left: 2.5rem;
     line-height: 2rem;
 }
 
 .insta {
     display: flex;
-    margin-top: 5rem;
-    margin-left: 18rem;
     right: 0px;
 }
 
@@ -852,7 +1024,7 @@ article h4{
 }
 
 .copyright {
-    height: 7rem;
+    height: 5rem;
     margin-top: 2.6rem;
     margin-left: 1.5rem;
     color: grey;
@@ -865,7 +1037,7 @@ article h4{
     bottom: 0;
     height: 4.3rem;
     width: 100vw;
-    background-color: #121212;
+    background: rgb(0, 0, 0);
     overflow: hidden;
     z-index: 5;
     display: flex;

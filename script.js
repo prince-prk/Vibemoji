@@ -47,7 +47,7 @@ playimg = document.getElementById('play-img');
 var defaultsongs=true;
 let loader=document.getElementById("loader");
 let spotify=[
-    {topic:"Spotify Playlists",data:[
+    {topic:"Vibemoji Playlists",data:[
 {song: "Today's Top Hits", img: './img/img1.jfif', subheading:'Peggu Gou is on top of the Hottest 50! '}
 ,
 {song: 'RapCaviar', img: './img/img2.jfif', subheading:'New Songs from &nbsp; Quavo, Polo G and Li...'}
@@ -91,11 +91,11 @@ song: "Rock Classic",img: "./img/img4.jfif",subheading:"Rock legends & epic song
         ,
         {song: 'Ganpati Bappa Moreya', img: './img/img17.jfif', subheading:'Sweet songs of devotion to praise...'}
         , 
-        {song: 'Mata Ka Darbaar', img: './img/img18.jfif', subheading:"Worship the Goddess &nbsp; of love and devotion..."}
+        {song: 'Mata Ka Darbaar', img: './img/img20.jfif', subheading:"Worship the Goddess &nbsp; of love and devotion..."}
         ,{ 
-        song: "Shri Rama Jai Rama",img: "./img/img19.jfif",subheading:"Jai Sita Ramayya!"
+        song: "Shri Rama Jai Rama",img: "./img/img18.jfif",subheading:"Jai Sita Ramayya!"
         },
-        {song: "Lord Hanuman Devotional Songs", img: './img/img20.jfif', subheading:'Album by Kumar Vishu...'}
+        {song: "Lord Hanuman Devotional Songs", img: './img/img19.jfif', subheading:'Album by Kumar Vishu...'}
         
             ]
     },
@@ -104,8 +104,18 @@ song: "Rock Classic",img: "./img/img4.jfif",subheading:"Rock legends & epic song
 let prevPlayesSong=[
 
 ];
+let searchtermArray=[];
+let playlistSong={};
+let playlistSongs=[];
+let firstPlaylist=true;
 let a=0;
+let playlist=false;
+let currPlayname;
+let playliston=false;
+let numberofPlaylist=1;
 function start(){
+    document.getElementById('searchTerm').value=""
+    document.getElementById('searchTerm').style.border="0.1rem solid #3c3c3c";
         defaultsongs=true;
         while (songs.firstChild) {
             songs.removeChild(songs.firstChild);
@@ -142,6 +152,7 @@ function start(){
 }
 )
 for(let i=0;i<child.length;i++){
+    if(i%6!==0){
     child[i].addEventListener('click', event => {
         // defaultsongs=true;
         if(child[i].childNodes[1].innerText)term=child[i].childNodes[1].innerText;
@@ -149,10 +160,64 @@ for(let i=0;i<child.length;i++){
         searchBtnClicked=true;
         updateTerm();
     
-})}
+    
+})}}
 a=prevPlayesSong.length-1;
 }
 start();
+
+const comingsoon=document.querySelectorAll(".comingsoon");
+comingsoon.forEach(ele =>{
+    
+    ele.addEventListener('click',()=>{
+        
+        songs.innerText=""
+        const temp=document.createElement("div");
+        temp.style.textAlign="center";
+        temp.innerText=ele.innerText;
+        const div=document.createElement('div')
+        div.style.marginTop="2rem";
+        const temp1=document.createElement("div");
+        temp1.innerText="Coming Soon";
+        temp1.style.textAlign="center";
+        temp1.style.color="grey";
+        temp1.style.marginTop="0.8rem"
+        temp1.style.fontSize="0.8rem"
+        if(ele.innerText==="About"){
+            temp.innerText="Made only for the learning purpose not for daily use";
+            temp1.innerHTML='<a href="https://open.spotify.com/" class="cursor" style="color: grey;">Inspired by Spotify</a><div class="cursor" style="margin-top:4rem; color:white;">Contact Us</div>'
+            const contactus=temp1.lastChild;
+            // contactus.marginTop="5rem";
+            contactus.addEventListener('click',()=>{
+                window.open('mailto:princekosta01@gmail.com');
+            })
+        }
+        
+        div.appendChild(temp);
+        div.appendChild(temp1);
+        div.style.padding="1rem"
+        songs.appendChild(div);
+    })
+}) 
+
+function sidebarOpen(){
+    console.log("prince");
+     const sidebar=document.getElementById('sr');
+    console.log(sidebar)
+    sidebar.style.display="unset"
+    sidebar.style.position="relative"
+    sidebar.style.width="100vw"
+    sidebar.style.zIndex="11"
+    sidebar.style.backgroundColor="black";
+    const cross=document.getElementById('cutsidebar');
+    cross.style.display="unset";
+    // cross.style.right='0';
+    cross,sidebar.addEventListener('click',()=>{
+        cross,sidebar.style.display="none";
+    },{once:true})
+
+    
+}
 playimg.style.height = "3.8rem";
 playimg.style.width = "3.8rem";
 next.style.marginLeft="-1.1rem"
@@ -170,8 +235,12 @@ const audio = document.getElementsByTagName("audio");
 let n=defaultsong.length;
 let searchBtnClicked=false,first=true;
 let m=0;
+let playlistsongPlayed=[
+
+]
 function playNextSong(tempSong,curr){
     curr.value = curr.value + 1;
+    console.log(currsongP.value);
     a=prevPlayesSong.length-1;
     let k = curr.value;
     console.log(k);
@@ -182,9 +251,8 @@ function playNextSong(tempSong,curr){
     playsong.innerHTML = tempSong[k].song.substring(0, 15) + "...";
 else playsong.innerHTML = tempSong[k].song;
 playaudio.src = tempSong[k].audio;
-// audioSource.src = totalsong[k].audio;
 playimg.src = tempSong[k].img;
-
+const audio=document.getElementsByTagName('audio')
 for (let i = 0; i < audio.length; i++) {
     if (audio[k] != audio[i]) audio[i].pause();
     
@@ -194,15 +262,18 @@ prevPlayesSong.push({song:tempSong[k].song,img:tempSong[k].img,audio:tempSong[k]
     m++;
     a=prevPlayesSong.length-1;
     playaudio.play();
+    
 }
 var prevBtnPressed=false;
+let currsongP={value:0}
+let j=0;
 function playPrevSong(){
     let k=prevPlayesSong.length-1;
     if(first){
         k=prevPlayesSong.length-1;
     }
     else {
-        k=a-1;
+        k=a;
         if(k<=0){
             k=0;
         }
@@ -252,6 +323,10 @@ playaudio.addEventListener('ended',() => {
         currsong.value=0;
         playNextSong(totalsong,currsongD);
     }
+    else if(playliston){
+        currsong.value=0;
+        playNextSong(playlistsongPlayed,currsongP)
+    }
     else playNextSong(defaultsong,currsong);
 });
 let emojies=[
@@ -291,11 +366,170 @@ document.getElementById("cross1").addEventListener("click",()=>{
     document.getElementById("emojiPicker").style.display="none"
 })
 
-const updateTerm = () => {
-    if(defaultsongs!=true)term = document.getElementById('searchTerm').value;
+const songPlay = (img, song, audio) => {
+  if (song.length >= 15)
+    playsong.innerHTML = song.substring(0,15)+"..."
+  else playsong.innerHTML = song;
+  let cacheBuster = Date.now();
+  playaudio.src =
+    audio +
+    "?timestamp=" +
+    cacheBuster;
+  playaudio.controls = true;
+  // const icon1 = document.createElement('i');
+//   console.log(playsong.innerText);
+  playimg.src = img;
+  fetch(playaudio.src).then((response) => {
+    if (response.ok) {
+        playaudio.play();
+        a = prevPlayesSong.length - 1;
+        prevPlayesSong.push({
+            song:playsong.innerText,
+            img:playimg.src,
+            audio:playaudio.src
+        })
+        a=prevPlayesSong.length-1;
+        playimg.style.height = "3.8rem";
+        playimg.style.aspectRatio = "1:1";
+
+        playaudio.style.width = "70%";
+        playaudio.style.height = "0.2rem";
+        playaudio.style.height = "2rem";
+        playaudio.style.outline = "none";
+        // play.style.gap="1.7rem"
+        play.style.cssText = "padding:1rem ;";
+        playaudio.play();
+      
+    }
+    else{
+        alert("Audio is not Available");
+    }
+  });
+
+  document.addEventListener('play', event => {
+    const audio = document.getElementsByTagName('audio');
+    
+    for (let i = 0; i < audio.length; i++) {
+        if (audio[i] != event.target) {
+            audio[i].pause();
+        }
+    }
+}, true)
+}
+
+const playPlaylist= (items)=>{
+    j=parseInt(items[13]); 
+    j-=1;
+  
+    songs.innerHTML="";
+        // console.log("jai shiv sambhuji maharaj");
+        for(let i in playlistSongs[j]){ 
+            // console.log("Prince");
+            // console.log(playlistSongs[j][i]);
+            const article = document.createElement('articles'),
+                artists = document.createElement('p'),
+                song = document.createElement('h4'),
+                img = document.createElement('img'),
+                audio = document.createElement('audio'),
+                audioSource = document.createElement('source')
+
+                    // song.style.marginTop="0.7rem";
+                    
+                    article.classList.add("playPlaylist");
+                    artists.innerHTML = playlistSongs[j][i].name;
+                    song.innerHTML = playlistSongs[j][i].song;
+                    img.src = playlistSongs[j][i].img;
+                    audioSource.src = playlistSongs[j][i].audio;
+                    audio.controls = true;
+                    
+                    
+                    article.appendChild(img);
+                    article.appendChild(song);
+                    article.appendChild(artists);
+                    
+                    article.appendChild(audio);
+                    audio.appendChild(audioSource);
+                    // audio.style.display="unset";
+                    // prince kosta is great person 
+                    // console.log(article);
+                    songs.appendChild(article);
+                    
+                }
+                for(let i=0;i<child.length;i++){
+                    child[i].addEventListener('click', event => {
+                        currsongP.value=i;
+                        
+                        //songPlay(img.src,song.innerText,audioSource.src);
+                        songPlay(child[i].childNodes[0].getAttribute('src'),child[i].children[1].innerHTML,child[i].childNodes[3].childNodes[0].getAttribute('src'));
+                        playliston=true;
+                    })}
+                // article.addEventListener('click',()=>{
+                // })
+        
+    
+}
+// playPlaylist();
+async function playlistDiv(item){
+    const pldiv=Array.from( document.getElementsByClassName('pldiv'));
+    
+    pldiv.map(it =>{
+
+        it.addEventListener('click',()=>{
+            
+            playlistsongPlayed=[]
+            // console.log(child);
+
+            playPlaylist(it.innerText);
+            
+    
+    
+                for(let i=0;i<child.length;i++){
+                        if(child[0].childNodes[1].innerText){
+                            playlistsongPlayed.push({
+                                img:child[i].childNodes[0].getAttribute('src'),
+                                song:child[i].childNodes[1].innerText,
+                                audio:child[i].childNodes[3].childNodes[0].getAttribute('src')
+                            })
+                        }
+                        
+                    }
+                    
+                })
+            })
+        }
+        let searchterm=false;
+        function emptyPlaylist(){
+    const temp=document.getElementById("playlist");
+    const div1=document.createElement('div');
+    const div2=document.createElement('div');
+    div1.innerText="Create your first playlist"
+    div2.innerText="Its easy, we'll help you"
+    const btn=document.createElement('button');
+    btn.innerText="Create playlist"
+    div1.setAttribute('id','plus1')
+    div2.setAttribute('id','p2')
+    btn.setAttribute('id','but');
+    btn.classList.add("but","cursor");
+    temp.appendChild(div1)
+    temp.appendChild(div2)
+    temp.appendChild(btn);
+
+}
+emptyPlaylist();
+document.getElementById("left1").addEventListener('click',()=>{
+    const temp=document.getElementById("playlist");
+    temp.style.backgroundColor="#4a4a4a";
+    setTimeout(()=>{
+        temp.style.backgroundColor="#242323";
+    },1000)
+})
+let currterm=0;
+let updateTerm = () => {
+    if(defaultsongs!=true && searchterm!==true)term = document.getElementById('searchTerm').value;
     if (!term || term === '') {
         alert('Please enter a seach term');
     } else {
+
         const url = `https://itunes.apple.com/search?term=${term}`;
         term=term.toUpperCase();
         const songContainer = document.getElementById('songs');
@@ -306,7 +540,15 @@ const updateTerm = () => {
         fetch(url)
             .then((Response) => Response.json())
             .then((data) => {
-
+                console.log(searchterm);
+                if(searchterm===false){
+                    searchtermArray.push(term)
+                    currterm=searchtermArray.length-1;
+                }
+                else{
+                    searchterm=false;
+                }
+                
                 const artists = data.results;
                 if(defaultsongs==true){
                     const mainHeading = document.createElement("div");
@@ -323,6 +565,7 @@ const updateTerm = () => {
                         }
                     }
                     prevBtnPressed=false;
+                    // wrong
                     totalsong=[
                         
                     ]
@@ -340,9 +583,14 @@ const updateTerm = () => {
                     article.classList.add("temp");
                     if(result.artistName.length<20)artists.innerHTML = result.artistName;
                     else artists.innerText= result.artistName.substring(0,19)+"..."
-                    // if(result.trackName.length<35)
+                    if(result.trackName){
+                        if(result.trackName.length<35)
                     song.innerHTML = result.trackName;
-                    // else song.innerText= result.trackName.substring(0,34)+"..."
+                    else song.innerText= result.trackName.substring(0,34)+"..."
+                    }
+                    else{
+                        song.innerHTML = result.trackName;
+                    }
                     img.src = result.artworkUrl100;
                     audioSource.src = result.previewUrl;
                     audio.controls = true;
@@ -365,29 +613,41 @@ const updateTerm = () => {
                     songContainer.style.justifyContent="space-evenly";
                     
                     totalsong.push({song:result.trackName,img:result.artworkUrl100,audio:result.previewUrl});
-                })
+                
+            })
                 
             })
             .then(() => {
+                let firstTime=true;
+                
                 for(let i=0;i<child.length;i++){
                     child[i].addEventListener('click', event => {
                         // while (play.firstChild) {
                             //     play.removeChild(play.firstChild);
                             // }
-                        currsongD.value=i;
 
-                        console.log(i);
+                            if(playlist!=true){
+                                playliston=false;
+                        currsongD.value=i;
+                        // let cacheBuster=Date.now();
+
+                        // console.log(i);
                         // const audio = document.getElementsByTagName('audio');
                         // play.innerHTML="";
-                        if(child[i].children[1].innerHTML.length>=15)playsong.innerHTML = child[i].children[1].innerHTML.substring(0,15)+ "...";
-                        else playsong.innerHTML = child[i].children[1].innerHTML
-                        let cacheBuster=Date.now();
-                        playaudio.src = child[i].childNodes[3].childNodes[0].getAttribute('src')+"?timestamp="+cacheBuster;
-                        playaudio.controls = true;
-                        // const icon1 = document.createElement('i');
-                        console.log(playsong.innerText)
-                        playimg.src = child[i].childNodes[0].getAttribute('src')
-                        // const icon2 = document.createElement('i');
+                        songPlay(child[i].childNodes[0].getAttribute('src'),child[i].children[1].innerHTML,child[i].childNodes[3].childNodes[0].getAttribute('src'));
+                        // if(child[i].children[1].innerHTML.length>=15)playsong.innerHTML = child[i].children[1].innerHTML.substring(0,15)+ "...";
+                        // else playsong.innerHTML = child[i].children[1].innerHTML
+                        // playaudio.src = child[i].childNodes[3].childNodes[0].getAttribute('src')+"?timestamp="+cacheBuster;
+                        // playaudio.controls = true;
+                        // // const icon1 = document.createElement('i');
+                        // console.log(playsong.innerText)
+                        // playimg.src = child[i].childNodes[0].getAttribute('src')
+
+
+
+
+
+                        // const icon2 = document.createElement('i'); use lesss
                         // try{
                         //     playaudio.play();
                         // }
@@ -396,44 +656,152 @@ const updateTerm = () => {
                         //     console.log("Na Ho Payenga: ",error)
 
                         // }
-                        let temp=false;
-                        fetch(playaudio.src)
-                        .then(response => {
-                            if(response.ok){
-                                prevPlayesSong.push({
-                                    song:playsong.innerText,
-                                    img:playimg.src,
-                                    audio:playaudio.src
-                                })
-                                playaudio.play();
+
+
+
                             }
                             else{
-                                alert("Audio is not Available");
+                                create_playlist.innerText="Save";
+                                const temp=document.getElementById("playlist")
+                                if(numberofPlaylist==1 && firstTime){
+                                    while (temp.firstChild) {
+                                    temp.removeChild(temp.firstChild);
+                                }
                             }
-                        })
-                        
-                        a=prevPlayesSong.length-1;
-                        playimg.style.height="3.8rem"
-                        playimg.style.aspectRatio="1:1"
-                        
-                        playaudio.style.width='70%';
-                        playaudio.style.height='0.2rem'
-                        playaudio.style.height='2rem';
-                        playaudio.style.outline='none';
-                        // play.style.gap="1.7rem"
-                        play.style.cssText="padding:1rem ;"
-                    }, true)
+                                if(firstTime){
+                                const div=document.createElement('div');
+                                const div1=document.createElement('div');
+                                div.innerText=` My Playlist @${numberofPlaylist}`;
+                                
+                                const btn1=document.createElement('button');
+                                btn1.innerText="Save"
+                                btn1.setAttribute('class',"but")
+                                btn1.style.width="5rem"
+                                const btn2=document.createElement('button');
+                                btn2.innerText="Cancel"
+                                btn2.style.width="5rem"
+                                btn2.setAttribute('class',"but")
+                                btn2.style.marginLeft="0.8rem"
+                                div.style.cursor="pointer";
+                                div1.appendChild(div)
+                                div1.appendChild(btn1);
+                                div1.appendChild(btn2);
+                                div.setAttribute('class','pldiv')
+                                div1.style.padding="0.8rem";
+                                div1.style.backgroundColor="#363434";
+                                div1.style.borderRadius="10px"
+                                temp.appendChild(div1);
+                                btn2.addEventListener('click',()=>{
+                                    playlistSong={}
+                                    playlist=false;
+                                    temp.removeChild(div1);
+                                    start();
+                                    if(playlistSongs.length==0)emptyPlaylist();
+                                })
+                                btn1.addEventListener('click',()=>{
+                                    searchBtnClicked=false;
+                                    if(Object.keys(playlistSong).length !==0){
+                                         playlistSongs.push(playlistSong);
+                            
+                                    playlistSong={}
+                                    playlist=false;
+                                    div1.removeChild(btn1);
+                                    div1.removeChild(btn2)
+                                    div1.setAttribute('id',"currPlaylist");
+                                    numberofPlaylist+=1;
+                                    playlistDiv(div.innerText);
+                                    start();
+                                    const a=document.getElementById("temp");
+                                }
+                                else{
+                                    alert("Select atleast one song")
+                                }
+                                // console.log("ab to ho ga");
+                                // console.log(playlistSongs);
+                                // div1.addEventListener('dblclick',()=>{
+                                //     document.getElementById('songs').innerText="";
+                                //     playliston=true;
+                                //     playPlaylist(div.innerText);
+                                // });
+                                
+                            })
+                            }
+                            
+                            }
+                        // fetch(playaudio.src)
+                        // .then(response => {
+                        //     if(response.ok){
+                                if(playlist!=true){
+                                // prevPlayesSong.push({
+                                //     song:playsong.innerText,
+                                //     img:playimg.src,
+                                //     audio:playaudio.src
+                                // })
+                                // playaudio.play();
+                                // a=prevPlayesSong.length-1;
+                                // playimg.style.height="3.8rem"
+                                // playimg.style.aspectRatio="1:1"
+                                
+                                // playaudio.style.width='70%';
+                                // playaudio.style.height='0.2rem'
+                                // playaudio.style.height='2rem';
+                                // playaudio.style.outline='none';
+                                // // play.style.gap="1.7rem"
+                                // play.style.cssText="padding:1rem ;"
+                            }
+                            else{
+                                if(child[i].children[1].innerText in playlistSong){
+                                    child[i].style.backgroundColor="#181616";
+                                    delete playlistSong[child[i].children[1].innerText];
+                                    
+                            }
+                            else{
+                                const cacheBuster=Date.now();
+                                console.log(child[i].children[1].innerHTML);
+                                if(firstTime)currPlayname=child[i].children[1].innerHTML;
+                                playlistSong[child[i].children[1].innerText]={
+                                    img:child[i].childNodes[0].getAttribute('src'),
+                                    song:child[i].children[1].innerHTML,
+                                    audio:child[i].childNodes[3].childNodes[0].getAttribute('src')+"?timestamp="+cacheBuster,
+                                    name:child[i].children[2].innerText
+                                }
+                                // playlistSong.push({
+                                    //     img:playimg.src,
+                                    //     song:playsong.innerHTML,
+                                    //     audio:playaudio.src,
+                                    //     name:child[i].children[2].innerHTML
+                                    // })
+                                    child[i].style.backgroundColor="#292929"
+                                }
+                            }
+                            firstTime=false;
+                            }
+                            // else{
+                            //     alert("Audio is not Available");
+                        //     }
+                        // })
+                // }
+                    , true)
                 }
-                
-                document.addEventListener('play', event => {
-                    // const audio = document.getElementsByTagName('audio');
+                // if(playlist!=true){
+
+
+
+
+                // document.addEventListener('play', event => {
+                //     const audio = document.getElementsByTagName('audio');
                     
-                    for (let i = 0; i < audio.length; i++) {
-                        if (audio[i] != event.target) {
-                            audio[i].pause();
-                        }
-                    }
-                }, true)
+                //     for (let i = 0; i < audio.length; i++) {
+                //         if (audio[i] != event.target) {
+                //             audio[i].pause();
+                //         }
+                //     }
+                // }, true)
+
+
+
+
+
                 // icon2.addEventListener('click',() =>{
                     //     playNextSong(totalsong);
                     // },true)
@@ -451,7 +819,34 @@ const updateTerm = () => {
                 })
                     
                 }
+                document.getElementById('searchTerm').value="";
             }
+document.getElementById("prevbtn").addEventListener('click',()=>{
+    if(currterm<=0 || searchtermArray.length==0 || searchtermArray.length==1){
+        start();
+        currterm=0;
+    }
+    else{
+        // console.log("nikal")
+        searchterm=true;
+        currterm=currterm-1;
+        term=searchtermArray[currterm];
+        updateTerm();
+    }
+})
+document.getElementById("nextbtn").addEventListener('click',()=>{
+    if(searchtermArray.length==0 || searchtermArray.length==1){
+        start();
+        currterm=0;
+    }
+    else{
+        searchterm=true;
+        currterm+=1;
+        currterm=currterm%searchtermArray.length
+        term=searchtermArray[currterm];
+        updateTerm();
+    }
+})
 
             
             const searchBtn = document.getElementById('searchTermBtn');
@@ -477,4 +872,24 @@ const updateTerm = () => {
             heading.innerText=document.getElementById('searchTerm').value;
             songs.appendChild(heading);
 // let arry = Array.from(songs);
+
+
+const playlistsave =()=>{
+    while (songs.firstChild) {
+        songs.removeChild(songs.firstChild);
+    }
+    playlist=true;
+    const div = document.createElement('h2');
+    div.innerText="Search Songs";
+    div.style.marginTop="2rem";
+    searchTerm.style.border="0.2rem solid white";
+    searchTerm.addEventListener('click',()=>{
+        searchTerm.style.border="0.1rem solid #3c3c3c";
+    },{once:true})
+    songs.appendChild(div);
+}
+const create_playlist=document.getElementById("but");
+create_playlist.addEventListener('click',playlistsave);
+const plus=document.getElementById("plus");
+plus.addEventListener('click',playlistsave);
 

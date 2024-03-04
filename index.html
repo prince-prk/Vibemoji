@@ -4,8 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="./img/favicon.png">
-    <title>Spotify - Web Player</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
+<link rel="manifest" href="img/site.webmanifest">
+    <title>Vibemoji Player</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,18 +44,24 @@
         </div>
        
         <div class="page-content" id="sr">
-            <div class="aside">
-                <div class="spotify1 "><img src="img/spotify.png" alt="img"></div>
+            <span class="cursor" id="cutsidebar"><i class="fa-regular fa-circle-xmark"></i></span>
+            <div class="aside example">
+                <div class="spotify1"><img src="img/favicon.ico" alt="img"><span>&nbsp;&nbsp; Vibemoji</span></div>
                 <div class="icon cursor" onclick="start()"><i class="fa-solid fa-house"></i> Home</div>
                 <div class="icon hover1 cursor" id="search"><i class="fa-solid fa-magnifying-glass"></i> Search</div>
             </div>
             <div class="Lib">
                 <div class="library">
                     <div class="hover1" id="libo">
-                        <div class="hover1 cursor" id="left1"><i class="fa-solid fa-bars"></i> Your Library
+                        <div class="hover1 cursor" id="left1"><i class="fa-solid fa-list-ul"></i> Your Library
                         </div>
-                        <div class="plus hover1 cursor"><i class="fa-solid fa-plus"></i></div>
+                        <div class="plus hover1 cursor" id="plus"><i class="fa-solid fa-plus"></i></div>
                     </div>
+                </div>
+                <div id="playlist">
+                    <!-- <div id="plus1">Create your first playlist</div>
+                    <div id="p2">Its easy, we'll help you</div>
+                    <button id="but" class="cursor but">Create playlist</button> -->
                 </div>
                 <div style="margin-bottom: 0.5rem;">
                 <div class="privacy cursor">Legal &nbsp; &nbsp; Privacy Center&nbsp; &nbsp; Privacy Policy</div>
@@ -70,16 +79,25 @@
             </div>
             <span id="emoji-explainer">Select Songs by Emoji</span>
             <div class="nav">
-                    <div id="sign">
-                        <input type="text" id="searchTerm">
-                        <button id="searchTermBtn"><i class="fa-solid fa-magnifying-glass cursor"></i></button>
+                <div id="sign">
+                        <i id="sidebar" class="fa-solid fa-bars" onclick="sidebarOpen()"></i>
+                        <span id="span">
+                            <div style="display: flex;">
+                            <i class="fa-solid fa-chevron-left" id="prevbtn"></i>
+                            <i class="fa-solid fa-chevron-right" id="nextbtn"></i>
+                            </div>
+                             <span style="display: flex;justify-content: flex-end;">
+                                <input type="text" id="searchTerm">
+                                <button id="searchTermBtn"><i class="fa-solid fa-magnifying-glass cursor"></i></button>
+                             </span>
+                        </span>
                         <!-- <button id="but2" class="cursor">Sign up</button>
                         <button id="but3" class="cursor">Log in</button> -->
                     </div>
                 </div>
                 <img id="loader" style="top: 50%;
                 left: 50%;  display: none;" src="/img/loader.gif" alt="">
-                <div class="songs example id1">
+                <div class="songs example">
                 <main id="songs">
     
                 <!-- <div class="fir-head">
@@ -100,33 +118,39 @@
 
             <div id="info">
                 <div class="company">
-                    <ul class="cursor">Company</ul>
-                    <li class="cursor">About</li>
-                    <li class="cursor">Jobs</li>
-                    <li class="cursor">For the record</li>
+                    <ul class="cursor comingsoon">Company</ul>
+                    <li class="cursor comingsoon">About</li>
+                    <li class="cursor comingsoon">Jobs</li>
+                    <li class="cursor comingsoon">For the record</li>
                 </div>
                 <div class="company community">
-                    <ul class="cursor">Communities</ul>
-                    <li class="cursor">For Artists</li>
-                    <li class="cursor">Developers</li>
-                    <li class="cursor">Advertisings</li>
-                    <li class="cursor">Investors</li>
-                    <li class="cursor">Vendors</li>
+                    <ul class="cursor comingsoon">Communities</ul>
+                    <li class="cursor comingsoon">For Artists</li>
+                    <li class="cursor comingsoon">Developers</li>
+                    <li class="cursor comingsoon">Advertisings</li>
                 </div>
                 <div class="company community">
-                    <ul class="cursor">Useful links</ul>
-                    <li class="cursor">Support</li>
-                    <li class="cursor">Free Mobile App</li>
+                    <ul class="cursor comingsoon">Useful links</ul>
+                    <li class="cursor comingsoon">Support</li>
+                    <li class="cursor comingsoon">Free Mobile App</li>
                 </div>
 
                 <div class="insta company">
-                    <i class="fa-brands fa-instagram cursor"></i>
-                    <i class="fa-brands fa-twitter cursor"></i>
-                    <i class="fa-brands fa-facebook cursor"></i>
+                    <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram cursor"></i></a>
+                    <a href="https://twitter.com/?lang=en" target="_blank"><i class="fa-brands fa-twitter cursor"></i></a>
+                    <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook cursor"></i></a>
                 </div>
             </div>
             <div class="border"></div>
-            <div class="copyright cursor"><i class="fa-regular fa-copyright"></i> 2023 Spotify AB</div>
+            <div class="copyright cursor"><i class="fa-regular fa-copyright"></i>
+                 2024 Vibemoji
+                 <br>
+                 <br>
+                 <div >Made only for the learning purpose not for daily use</div>
+                 <a href="https://open.spotify.com/" class="cursor" style="color: grey;">Inspired by Spotify</a>
+
+                </div>
+            
         </div>
         <!-- https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f5/13/34/f51334f2-5e97-d82b-8fff-c935106d6450/mzm.joekxfas.jpg/100x100bb.jpg -->
         <div class="page-content" id="footer">
