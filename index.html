@@ -46,28 +46,33 @@
         <div class="page-content" id="sr">
             <span class="cursor" id="cutsidebar"><i class="fa-regular fa-circle-xmark"></i></span>
             <div class="aside example">
-                <div class="spotify1"><img src="img/favicon.ico" alt="img"><span>&nbsp;&nbsp; Vibemoji</span></div>
-                <div class="icon cursor" onclick="start()"><i class="fa-solid fa-house"></i> Home</div>
-                <div class="icon hover1 cursor" id="search"><i class="fa-solid fa-magnifying-glass"></i> Search</div>
+                <div class="spotify1 closesideBar"><img src="img/favicon.ico" alt="img"><span>&nbsp;&nbsp; Vibemoji</span></div>
+                <div class="icon cursor closesideBar" onclick="start()"><i class="fa-solid fa-house"></i> Home</div>
+                <div class="icon hover1 cursor closesideBar" id="search"><i class="fa-solid fa-magnifying-glass"></i> Search</div>
             </div>
             <div class="Lib">
                 <div class="library">
                     <div class="hover1" id="libo">
                         <div class="hover1 cursor" id="left1"><i class="fa-solid fa-list-ul"></i> Your Library
                         </div>
-                        <div class="plus hover1 cursor" id="plus"><i class="fa-solid fa-plus"></i></div>
+                        <div class="plus hover1 cursor  closesideBar" id="plus"><i class="fa-solid fa-plus"></i></div>
                     </div>
                 </div>
-                <div id="playlist">
+                <div id="playlist" class="closesideBar">
                     <!-- <div id="plus1">Create your first playlist</div>
                     <div id="p2">Its easy, we'll help you</div>
                     <button id="but" class="cursor but">Create playlist</button> -->
                 </div>
                 <div style="margin-bottom: 0.5rem;">
-                <div class="privacy cursor">Legal &nbsp; &nbsp; Privacy Center&nbsp; &nbsp; Privacy Policy</div>
-                <div class="privacy cursor">Cookies &nbsp; &nbsp; About Ads &nbsp; &nbsp; Accessibility</div>
-                <div class="privacy cursor">Cookies</div>
-                <span id="english" class="cursor"><i class="fa-solid fa-globe"></i>English</span>
+                <div class="privacy cursor closesideBar">Legal &nbsp; &nbsp; Privacy Center&nbsp; &nbsp; Privacy Policy</div>
+                <div class="privacy cursor closesideBar">Cookies &nbsp; &nbsp; About Ads &nbsp; &nbsp; Accessibility</div>
+                <div class="privacy cursor closesideBar">Cookies</div>
+                <span id="english" class="cursor">
+                    <i class="fa-solid fa-globe"></i>
+                    <select name="lang" style="background:transparent;color: white;border: 0px;">
+                        <option value="english" class="closesideBar">English</option>
+                      </select>
+                </span>
                 </div>
             </div>
         </div>
@@ -87,7 +92,7 @@
                             <i class="fa-solid fa-chevron-right" id="nextbtn"></i>
                             </div>
                              <span style="display: flex;justify-content: flex-end;">
-                                <input type="text" id="searchTerm">
+                                <input type="text" id="searchTerm" placeholder="Type here...">
                                 <button id="searchTermBtn"><i class="fa-solid fa-magnifying-glass cursor"></i></button>
                              </span>
                         </span>
