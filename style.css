@@ -7,6 +7,7 @@ body {
     font-family: "Josefin Sans", sans-serif;
     font-optical-sizing: auto;
     font-style: normal;
+    background-color: black;
 }
 
 @media screen and (max-width: 2129px) and (min-width: 1051px) {
@@ -140,6 +141,9 @@ body {
         align-items: center;
     }
 
+    .playPlaylist{
+        max-width: 90% !important;
+    }
     #sidebar {
         display: unset !important;
     }
@@ -154,6 +158,10 @@ body {
 
     .searchTerm {
         width: 15rem !important;
+    }
+    #main{  
+        margin-top: 0 !important;
+        margin-right: 0 !important;
     }
 }
 
@@ -174,7 +182,9 @@ body {
     #sidebar {
         display: unset !important;
     }
-
+    .playPlaylist{
+        max-width: 87% !important;
+    }
     #sr {
         display: none;
     }
@@ -187,6 +197,10 @@ body {
 
     .searchTerm {
         width: 20rem !important;
+    }
+    #main{ 
+        margin-top: 0 !important;
+        margin-right: 0 !important;
     }
 }
 
@@ -205,7 +219,11 @@ body {
     }
 
     #sidebar {
-        display: unset !important;
+        max-width: 80% !important;
+    }
+    .playPlaylist{
+        width: 87% !important;
+        font-size: 0.9rem;
     }
 
     #sr {
@@ -235,13 +253,15 @@ body {
         height: 1.7rem !important;
     }
 
-    #main #emojiPicker {
+    body #emojiPicker {
         width: 2rem !important;
         height: 2rem !important;
         /* right: rem !important; */
     }
 
     #main {
+        margin-top: 0 !important;
+        margin-right: 0 !important;
         height: 89vh !important;
     }
 }
@@ -252,7 +272,9 @@ body {
     }
 
     #main {
-        height: 88.5vh !important;
+        margin-top: 0 !important;
+        height: 87.7vh !important;
+        margin-right: 0 !important;
     }
 
     #sign {
@@ -263,6 +285,13 @@ body {
         display: flex;
         justify-content: space-between;
         align-items: center;
+    }
+    .playPlaylist{
+        max-width: 87% !important;
+        font-size: 0.8rem;
+    }
+    .top-list{
+        transform: scale(1.085);
     }
 
     #sr {
@@ -300,7 +329,7 @@ body {
         height: 1.7rem !important;
     }
 
-    #main #emojiPicker {
+    body #emojiPicker {
         width: 2rem !important;
         height: 2rem !important;
         right: 1rem !important;
@@ -327,6 +356,9 @@ body {
     .play {
         display: none;
     }
+    .top-list{
+        transform: scale(1.11);
+    }
 
     #sr {
         display: none;
@@ -335,10 +367,17 @@ body {
     #sidebar {
         display: unset !important;
     }
+    .playPlaylist{
+        max-width: 87% !important;
+        font-size: 0.8rem;
+    }
+    #emoji-container{
+        width: 9rem;
+    }
 
     #sign {
         width: 100% !important;
-        margin-right: -1rem;
+        margin-right: 0rem;
         position: absolute;
         right: 0;
         display: flex;
@@ -363,10 +402,14 @@ body {
         height: 1.7rem !important;
     }
 
-    #main #emojiPicker {
+    body #emojiPicker {
         width: 2rem !important;
         height: 2rem !important;
         right: 1rem !important;
+    }
+    #main{
+        margin-top: 0 !important;
+        margin-right: 0 !important;
     }
 }
 
@@ -399,6 +442,10 @@ body {
 
     #sidebar {
         display: unset !important;
+    }
+    .playPlaylist{
+        font-size: 0.75rem;
+        max-width: 85% !important;
     }
 
     #sr {
@@ -439,8 +486,12 @@ body {
         width: 22rem !important;
         height: 1.7rem !important;
     }
+    #main{
+        margin-top: 0 !important;
+        margin-right: 0 !important;
+    }
 
-    #main #emojiPicker {
+    body #emojiPicker {
         width: 1rem !important;
         height: 1rem !important;
         right: 1rem !important;
@@ -455,6 +506,9 @@ body {
 a {
     text-decoration: none;
     color: white;
+}
+.spotify1{
+    position: relative;
 }
 
 .spotify1 img {
@@ -674,7 +728,7 @@ a {
     height: 85vh;
 }
 
-#main #emojiPicker {
+body #emojiPicker {
     background: linear-gradient(#ee3131, #3847ed);
     padding: 1rem;
     border-radius: 50%;
@@ -687,7 +741,7 @@ a {
     cursor: pointer;
 }
 
-#main #cross1 {
+body #cross1 {
     position: absolute;
     background: #1d1d1d;
     padding: 0.2rem;
@@ -986,9 +1040,9 @@ article p {
     padding-right: 1rem;
     align-items: center;
     background-color: #070707a6;
-    width: 90% !important;
+    width: 95% !important;
     height: 4rem;
-    margin-top: 0.8rem;
+    margin-top: 0.6rem;
     border-radius: 10px;
     cursor: pointer;
 }
@@ -1124,6 +1178,7 @@ article p {
 
 #emoji-container {
     display: none;
+    /* width: 10rem; */
     position: absolute;
     z-index: 7;
     cursor: pointer;

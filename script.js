@@ -1,5 +1,5 @@
-let term = "";
 console.log("Made with love by Prince");
+let term = "";
 let totalsong = [];
 
 let defaultsong = [
@@ -343,6 +343,7 @@ let searchBtnClicked = false,
 let m = 0;
 let playlistsongPlayed = [];
 function playNextSong(tempSong, curr) {
+    if(first)
     curr.value = curr.value + 1;
     console.log(currsongP.value);
     a = prevPlayesSong.length - 1;
@@ -375,6 +376,7 @@ var prevBtnPressed = false;
 let currsongP = { value: 0 };
 let j = 0;
 function playPrevSong() {
+    a -= 1;
     let k = prevPlayesSong.length - 1;
     if (first) {
         k = prevPlayesSong.length - 1;
@@ -383,7 +385,6 @@ function playPrevSong() {
         if (k <= 0) {
             k = 0;
         }
-        a -= 1;
     }
     prevBtnPressed = true;
     first = false;
@@ -404,7 +405,6 @@ function playPrevSong() {
 prev.addEventListener("click", () => {
     if (prevPlayesSong.length >= 1) {
         playPrevSong();
-    } else {
     }
 });
 let currsongD = { value: 0 };
@@ -431,19 +431,22 @@ playaudio.addEventListener("ended", () => {
     } else playNextSong(defaultsong, currsong);
 });
 let emojies = [
-    "Hindi Songs",
+    "Songs",
     "Romantic Hindi Songs",
-    "Most Liked Songs",
+    "Most Liked Hindi Songs",
     "Sad Hindi Songs",
     "Bhajan",
 ];
 const funemoji = () => {
     const emoji_container = document.getElementById("emoji-container");
+    const page=document.querySelector(".page");
+    page.style.filter='blur(6px)';
     const cut = document.getElementById("cross");
     const emoji = document.getElementsByClassName("emoji");
     emoji_container.style.display = "flex";
     for (let i = 0; i < emoji.length; i++) {
         emoji[i].addEventListener("click", () => {
+            page.style.filter='blur(0)';
             term = emojies[i];
             defaultsongs = true;
             emoji_container.style.display = "none";
@@ -452,6 +455,7 @@ const funemoji = () => {
         });
     }
     cut.addEventListener("click", () => {
+        page.style.filter='blur(0)';
         emoji_container.style.display = "none";
     });
 };
@@ -523,6 +527,7 @@ const playPlaylist = (items) => {
     j -= 1;
 
     songs.innerHTML = "";
+    songs.style.justifyContent="start !important"
     // console.log("jai shiv sambhuji maharaj");
     for (let i in playlistSongs[j]) {
         // console.log("Prince");
@@ -547,8 +552,8 @@ const playPlaylist = (items) => {
         article.appendChild(song);
         article.appendChild(artists);
 
-        article.appendChild(audio);
         audio.appendChild(audioSource);
+        article.appendChild(audio);
         // audio.style.display="unset";
         // prince kosta is great person
         // console.log(article);
@@ -646,12 +651,13 @@ let updateTerm = () => {
                 }
 
                 const artists = data.results;
-                if (defaultsongs == true) {
-                    const mainHeading = document.createElement("div");
-                    mainHeading.innerHTML = `<div style="font-size:1.7rem;">${term}</div>`;
-                    songContainer.appendChild(mainHeading);
-                    mainHeading.setAttribute("id", "spotify");
-                }
+                //        IMP
+                // if (defaultsongs == true) {
+                //     const mainHeading = document.createElement("div");
+                //     mainHeading.innerHTML = `<div style="font-size:1.7rem;">${term}</div>`;
+                //     songContainer.appendChild(mainHeading);
+                //     mainHeading.setAttribute("id", "spotify");
+                // }
                 // div.style.marginTop="5rem";
                 if (prevBtnPressed) {
                     if (prevPlayesSong.length - 1 != a) {
@@ -663,6 +669,7 @@ let updateTerm = () => {
                 prevBtnPressed = false;
                 // wrong
                 totalsong = [];
+                first=true;
                 return artists.map((result) => {
                     const article = document.createElement("article"),
                         artists = document.createElement("p"),
@@ -721,10 +728,10 @@ let updateTerm = () => {
                             // while (play.firstChild) {
                             //     play.removeChild(play.firstChild);
                             // }
-
+                            
+                            currsongD.value = i;
                             if (playlist != true) {
                                 playliston = false;
-                                currsongD.value = i;
                                 // let cacheBuster=Date.now();
 
                                 // console.log(i);
@@ -864,6 +871,7 @@ document.getElementById("searchTerm").addEventListener("keydown", (event) => {
     if (event.keyCode === 13) {
         loader.style.display = "unset";
         enterkeyPress = true;
+        searchBtnClicked = true;
         term = document.getElementById("searchTerm").value;
         updateTerm();
     }
