@@ -209,6 +209,25 @@ let playlist = false;
 let currPlayname;
 let playliston = false;
 let numberofPlaylist = 1;
+let height=songs.getBoundingClientRect().top;
+let scrollUp = () =>{
+    let lastscrollheight=0;
+    var interval=setInterval(()=>{
+        const currheight=songs.getBoundingClientRect().top;
+        if(lastscrollheight!==0){
+            if(lastscrollheight>currheight){
+                clearInterval(interval);
+                return;
+            }
+        }
+        if(currheight>=height){
+            clearInterval(interval);
+            return;
+        }
+        main.scrollBy(0,-50);
+        lastscrollheight=currheight;
+    },20)
+}
 function start() {
     document.getElementById("searchTerm").value = "";
     document.getElementById("searchTerm").style.border = "0.1rem solid #3c3c3c";
@@ -244,6 +263,7 @@ function start() {
             songs.appendChild(article);
             songs.style.justifyContent = "space-evenly";
         });
+        scrollUp();
     });
     for (let i = 0; i < child.length; i++) {
         if (i % 6 !== 0) {
@@ -295,7 +315,6 @@ comingsoon.forEach((ele) => {
 });
 
 function sidebarOpen() {
-    console.log("prince");
     const sidebar = document.getElementById("sr");
     sidebar.style.display = "unset";
     sidebar.style.position = "relative";
@@ -615,7 +634,10 @@ function emptyPlaylist() {
     temp.appendChild(div2);
     temp.appendChild(btn);
 }
-emptyPlaylist();
+if(playlistSongs.length==0){
+
+    emptyPlaylist();
+} 
 document.getElementById("left1").addEventListener("click", () => {
     const temp = document.getElementById("playlist");
     temp.style.backgroundColor = "#4a4a4a";
@@ -720,7 +742,7 @@ let updateTerm = () => {
             })
             .then(() => {
                 let firstTime = true;
-
+                scrollUp();
                 for (let i = 0; i < child.length; i++) {
                     child[i].addEventListener(
                         "click",
@@ -825,7 +847,7 @@ let updateTerm = () => {
                                     //     audio:playaudio.src,
                                     //     name:child[i].children[2].innerHTML
                                     // })
-                                    child[i].style.backgroundColor = "#292929";
+                                    child[i].style.backgroundColor = "rgb(64,64,64)";
                                 }
                             }
                             firstTime = false;
@@ -846,7 +868,7 @@ let updateTerm = () => {
                     start();
                 }
                 loader.style.display = "none";
-            });
+            })
     }
     document.getElementById("searchTerm").value = "";
 };
