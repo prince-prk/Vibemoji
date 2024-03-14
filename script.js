@@ -352,7 +352,7 @@ playaudio.style.width = "70%";
 playaudio.style.height = "0.2rem";
 playaudio.style.height = "2rem";
 playaudio.style.outline = "none";
-// play.style.gap="1.7rem"
+play.style.gap="1.7rem"
 play.style.cssText = "padding:1rem ;";
 
 const audio = document.getElementsByTagName("audio");
@@ -433,7 +433,12 @@ next.addEventListener(
         if (searchBtnClicked) {
             currsong.value = 0;
             playNextSong(totalsong, currsongD);
-        } else {
+        }
+        else if (playliston) {
+            currsong.value = 0;
+            playNextSong(playlistsongPlayed, currsongP);
+        }
+         else {
             playNextSong(defaultsong, currsong);
         }
     },
@@ -511,15 +516,16 @@ const songPlay = (img, song, audio) => {
                 audio: playaudio.src,
             });
             a = prevPlayesSong.length - 1;
-            playimg.style.height = "3.8rem";
-            playimg.style.aspectRatio = "1:1";
+            // playimg.style.height = "3.8rem";
+            // playimg.style.aspectRatio = "1:1";
 
-            playaudio.style.width = "70%";
-            playaudio.style.height = "0.2rem";
-            playaudio.style.height = "2rem";
-            playaudio.style.outline = "none";
-            // play.style.gap="1.7rem"
-            play.style.cssText = "padding:1rem ;";
+            // // playaudio.style.width = "70%";
+            // // playaudio.style.height = "0.2rem";
+            // // playaudio.style.height = "2rem";
+            // // playaudio.style.outline = "none";
+            // playaudio.add.classList('playaudio');
+            // // play.style.gap="1.7rem"
+            // play.style.cssText = "padding:1rem ;";
             playaudio.play();
         } else {
             alert("Audio is not Available");
