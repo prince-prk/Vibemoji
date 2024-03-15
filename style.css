@@ -202,6 +202,8 @@ body {
         margin-top: 0 !important;
         margin-right: 0 !important;
     }
+    
+    
 }
 
 @media screen and (max-width: 543px) and (min-width: 412px) {
@@ -265,6 +267,10 @@ body {
         margin-top: 0 !important;
         margin-right: 0 !important;
         height: 89.8vh !important;
+    }
+    
+    #info{
+        padding-left: 0 !important;
     }
 }
 
@@ -336,6 +342,10 @@ body {
         height: 2rem !important;
         right: 1rem !important;
     }
+    
+    #info{
+        padding-left: 0 !important;
+    }
 
     /* .searchTerm{
         width: 5rem !important;
@@ -375,6 +385,9 @@ body {
     }
     #emoji-container{
         width: 9rem;
+    }
+    #info{
+        padding-left: 0 !important;
     }
 
     #sign {
@@ -503,6 +516,10 @@ body {
     #emoimg {
         height: 95%;
         width: 95%;
+    }
+    
+    #info{
+        padding-left: 0 !important;
     }
 }
 

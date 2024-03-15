@@ -119,7 +119,7 @@ let spotify = [
             {
                 song: "Deep Focus",
                 img: "./img/img7.jfif",
-                subheading: "keep calm and focus with amblent and...",
+                subheading: "keep calm and focus &nbsp; with amblent and...",
             },
             {
                 song: "Instrumental Study",
@@ -183,17 +183,17 @@ let spotify = [
             },
             {
                 song: "Mata Ka Darbaar",
-                img: "./img/img20.jfif",
-                subheading: "Worship the Goddess &nbsp; of love and devotion...",
+                img: "./img/img18.jfif",
+                subheading: "Worship the Goddess of love and devotion...",
             },
             {
                 song: "Shri Rama Jai Rama",
-                img: "./img/img18.jfif",
+                img: "./img/img19.jfif",
                 subheading: "Jai Sita Ramayya!",
             },
             {
                 song: "Lord Hanuman Devotional Songs",
-                img: "./img/img19.jfif",
+                img: "./img/img20.jfif",
                 subheading: "Album by Kumar Vishu...",
             },
         ],
