@@ -546,9 +546,7 @@ a {
 }
 
 .page {
-    position: fixed;
     height: 100vh;
-    width: 100vw;
     display: flex;
     background-color: black;
 }
@@ -1256,7 +1254,7 @@ audio::-webkit-media-controls-panel {
 #emoji-container {
     display: none;
     /* width: 10rem; */
-    position: absolute;
+    position: fixed;
     z-index: 7;
     cursor: pointer;
     gap: 2rem;

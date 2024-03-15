@@ -473,14 +473,11 @@ let emojies = [
 //emoji-container
 const funemoji = () => {
   const emoji_container = document.getElementById("emoji-container");
-  const page = document.querySelector(".page");
-  page.style.filter = "blur(6px)";
   const cut = document.getElementById("cross");
   const emoji = document.getElementsByClassName("emoji");
   emoji_container.style.display = "flex";
   for (let i = 0; i < emoji.length; i++) {
     emoji[i].addEventListener("click", () => {
-      page.style.filter = "blur(0)";
       term = emojies[i];
       defaultsongs = true;
       emoji_container.style.display = "none";
@@ -489,7 +486,6 @@ const funemoji = () => {
     });
   }
   cut.addEventListener("click", () => {
-    page.style.filter = "blur(0)";
     emoji_container.style.display = "none";
   });
 };
