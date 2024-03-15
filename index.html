@@ -1,114 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="apple-touch-icon" sizes="180x180" href="/img/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/img/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/img/favicon-16x16.png">
-<link rel="manifest" href="img/site.webmanifest">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/img/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="/img/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="/img/favicon-16x16.png"
+    />
+    <link rel="manifest" href="img/site.webmanifest" />
     <title>Vibemoji Player</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Madimi+One&family=Roboto:wght@300&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Madimi+One&family=Roboto:wght@300&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-</head>
-
-<body class="example">
+  <body class="example">
     <div id="emoji-container">
-        <img id="cross" src="/img/cross.gif" alt="">
-        <div class="emoji">
-            <img src="/img/thinking.gif" alt="">
-            <div>Thinking</div>
-        </div>
-        <div class="emoji">
-            <img src="/img/romantic.gif" alt="">
-            <div >Romantic Songs</div>
-        </div>
-        <div class="emoji">
-            <img src="img/liked.gif" alt="">
-            <div>Most Liked Songs</div>
-        </div>
-        <div class="emoji">
-            <img src="/img/sad.gif" alt="">
-            <div >Sad Songs</div>
-        </div>
-        <div class="emoji">
-            <img src="/img/bhajan.gif" alt="">
-            <div>Bhajan</div>
-        </div>
+      <img id="cross" src="/img/cross.gif" alt="" />
+      <div class="emoji">
+        <img src="/img/thinking.gif" alt="" />
+        <div>Thinking</div>
+      </div>
+      <div class="emoji">
+        <img src="/img/romantic.gif" alt="" />
+        <div>Romantic Songs</div>
+      </div>
+      <div class="emoji">
+        <img src="img/liked.gif" alt="" />
+        <div>Most Liked Songs</div>
+      </div>
+      <div class="emoji">
+        <img src="/img/sad.gif" alt="" />
+        <div>Sad Songs</div>
+      </div>
+      <div class="emoji">
+        <img src="/img/bhajan.gif" alt="" />
+        <div>Bhajan</div>
+      </div>
     </div>
     <div class="page">
-       
-        <div class="page-content" id="sr">
-            <span class="cursor" id="cutsidebar"><i class="fa-regular fa-circle-xmark"></i></span>
-            <div class="aside example">
-                <div class="spotify1 closesideBar"><img src="img/favicon.ico" alt="img"><span>&nbsp;&nbsp; Vibemoji</span></div>
-                <div class="icon cursor closesideBar" onclick="start()"><i class="fa-solid fa-house"></i> Home</div>
-                <div class="icon hover1 cursor closesideBar" id="search"><i class="fa-solid fa-magnifying-glass"></i> Search</div>
+      <div class="page-content" id="sr">
+        <span class="cursor" id="cutsidebar"
+          ><i class="fa-regular fa-circle-xmark"></i
+        ></span>
+        <div class="aside example">
+          <div class="spotify1 closesideBar">
+            <img src="img/favicon.ico" alt="img" /><span
+              >&nbsp;&nbsp; Vibemoji</span
+            >
+          </div>
+          <div class="icon cursor closesideBar" onclick="start()">
+            <i class="fa-solid fa-house"></i> Home
+          </div>
+          <div class="icon hover1 cursor closesideBar" id="search">
+            <i class="fa-solid fa-magnifying-glass"></i> Search
+          </div>
+        </div>
+        <div class="Lib">
+          <div class="library">
+            <div class="hover1" id="libo">
+              <div class="hover1 cursor" id="left1">
+                <i class="fa-solid fa-list-ul"></i> Your Library
+              </div>
+              <div class="plus hover1 cursor closesideBar" id="plus">
+                <i class="fa-solid fa-plus"></i>
+              </div>
             </div>
-            <div class="Lib">
-                <div class="library">
-                    <div class="hover1" id="libo">
-                        <div class="hover1 cursor" id="left1"><i class="fa-solid fa-list-ul"></i> Your Library
-                        </div>
-                        <div class="plus hover1 cursor  closesideBar" id="plus"><i class="fa-solid fa-plus"></i></div>
-                    </div>
-                </div>
-                <div style="
-                flex: 1;">
-                <div id="playlist" class="closesideBar">
-                    <!-- <div id="plus1">Create your first playlist</div>
+          </div>
+          <div style="flex: 1">
+            <div id="playlist" class="closesideBar">
+              <!-- <div id="plus1">Create your first playlist</div>
                     <div id="p2">Its easy, we'll help you</div>
                     <button id="but" class="cursor but">Create playlist</button> -->
-                </div>
-                </div>
-                <div style="margin-bottom: 0.5rem;">
-                <div class="privacy cursor closesideBar">Legal &nbsp; &nbsp; Privacy Center&nbsp; &nbsp; Privacy Policy</div>
-                <div class="privacy cursor closesideBar">Cookies &nbsp; &nbsp; About Ads &nbsp; &nbsp; Accessibility</div>
-                <div class="privacy cursor closesideBar">Cookies</div>
-                <span id="english" class="cursor">
-                    <i class="fa-solid fa-globe"></i>
-                    <select name="lang" style="background:transparent;color: white;border: 0px;">
-                        <option value="english" class="closesideBar">English</option>
-                      </select>
-                </span>
-                </div>
             </div>
+          </div>
+          <div style="margin-bottom: 0.5rem">
+            <div class="privacy cursor closesideBar">
+              Legal &nbsp; &nbsp; Privacy Center&nbsp; &nbsp; Privacy Policy
+            </div>
+            <div class="privacy cursor closesideBar">
+              Cookies &nbsp; &nbsp; About Ads &nbsp; &nbsp; Accessibility
+            </div>
+            <div class="privacy cursor closesideBar">Cookies</div>
+            <span id="english" class="cursor">
+              <i class="fa-solid fa-globe"></i>
+              <select
+                name="lang"
+                style="background: transparent; color: white; border: 0px"
+              >
+                <option value="english" class="closesideBar">English</option>
+              </select>
+            </span>
+          </div>
         </div>
-        
-        <div class="example" id="main">
-            <div id="emojiPicker">
-            <img id="emoimg"  src="/img/emoji.gif" alt="">
-            <img id="cross1" src="/img/cross.gif" alt="">
-            </div>
-            <span id="emoji-explainer">Select Songs by Emoji</span>
-            <div class="nav">
-                <div id="sign">
-                        <i id="sidebar" class="fa-solid fa-bars" onclick="sidebarOpen()"></i>
-                        <span id="span">
-                            <div style="display: flex;">
-                            <i class="fa-solid fa-chevron-left" id="prevbtn"></i>
-                            <i class="fa-solid fa-chevron-right" id="nextbtn"></i>
-                            </div>
-                             <span style="display: flex;justify-content: flex-end;">
-                                <input type="text" id="searchTerm" placeholder="Type here...">
-                                <button id="searchTermBtn"><i class="fa-solid fa-magnifying-glass cursor"></i></button>
-                             </span>
-                        </span>
-                        <!-- <button id="but2" class="cursor">Sign up</button>
+      </div>
+
+      <div class="example" id="main">
+        <div id="emojiPicker">
+          <img id="emoimg" src="/img/emoji.gif" alt="" />
+          <img id="cross1" src="/img/cross.gif" alt="" />
+        </div>
+        <span id="emoji-explainer">Select Songs by Emoji</span>
+        <div class="nav">
+          <div id="sign">
+            <i
+              id="sidebar"
+              class="fa-solid fa-bars"
+              onclick="sidebarOpen()"
+            ></i>
+            <span id="span">
+              <div style="display: flex">
+                <i class="fa-solid fa-chevron-left" id="prevbtn"></i>
+                <i class="fa-solid fa-chevron-right" id="nextbtn"></i>
+              </div>
+              <span style="display: flex; justify-content: flex-end">
+                <input type="text" id="searchTerm" placeholder="Type here..." />
+                <button id="searchTermBtn">
+                  <i class="fa-solid fa-magnifying-glass cursor"></i>
+                </button>
+              </span>
+            </span>
+            <!-- <button id="but2" class="cursor">Sign up</button>
                         <button id="but3" class="cursor">Log in</button> -->
-                    </div>
-                </div>
-                <img id="loader" style="top: 50%;
-                left: 50%;  display: none;" src="/img/loader.gif" alt="">
-                <div class="songs example">
-                <main id="songs">
-    
-                <!-- <div class="fir-head">
+          </div>
+        </div>
+        <img
+          id="loader"
+          style="top: 50%; left: 50%; display: none"
+          src="/img/loader.gif"
+          alt=""
+        />
+        <div class="songs example">
+          <main id="songs">
+            <!-- <div class="fir-head">
                     <span id="spotify" class="cursor">Spotify Playlists</span>
                     <span class="show-all cursor">Show all</span>
                 </div>
@@ -119,70 +164,89 @@
                         <div class="sub-heading">Peggu Gou is on top of the Hottest 50! </div>
                     </div>
                     !-- <span class="play cursor"><i class="fa-solid fa-circle-play play1" style="color: #05a810;"></i> -->
-                    <!-- </span> -->
-                    
-                </main>
-            </div>
-
-            <div id="info">
-                <div class="company">
-                    <ul class="cursor comingsoon">Company</ul>
-                    <li class="cursor comingsoon">About</li>
-                    <li class="cursor comingsoon">Jobs</li>
-                    <li class="cursor comingsoon">For the record</li>
-                </div>
-                <div class="company community">
-                    <ul class="cursor comingsoon">Communities</ul>
-                    <li class="cursor comingsoon">For Artists</li>
-                    <li class="cursor comingsoon">Developers</li>
-                    <li class="cursor comingsoon">Advertisings</li>
-                </div>
-                <div class="company community">
-                    <ul class="cursor comingsoon">Useful links</ul>
-                    <li class="cursor comingsoon">Support</li>
-                    <li class="cursor comingsoon">Free Mobile App</li>
-                </div>
-
-                <div class="insta company">
-                    <a href="https://www.instagram.com/" target="_blank"><i class="fa-brands fa-instagram cursor"></i></a>
-                    <a href="https://twitter.com/?lang=en" target="_blank"><i class="fa-brands fa-twitter cursor"></i></a>
-                    <a href="https://www.facebook.com/" target="_blank"><i class="fa-brands fa-facebook cursor"></i></a>
-                </div>
-            </div>
-            <div class="border"></div>
-            <div class="copyright cursor"><i class="fa-regular fa-copyright"></i>
-                 2024 Vibemoji
-                 <br>
-                 <br>
-                 <div >Made only for the learning purpose not for daily use</div>
-                 <a href="https://open.spotify.com/" class="cursor" style="color: grey;">Inspired by Spotify</a>
-
-                </div>
-                <br>
-            
+            <!-- </span> -->
+          </main>
         </div>
-        <!-- https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f5/13/34/f51334f2-5e97-d82b-8fff-c935106d6450/mzm.joekxfas.jpg/100x100bb.jpg -->
-        <div class="page-content" id="footer">
-            <div id="play-icon">
-                <img id="play-img" src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2d/11/b9/2d11b994-b4fa-19eb-953d-70b472165e95/8903431566911_cover.jpg/100x100bb.jpg" alt="">
-                <span id="prev"><i class="fa-solid fa-backward-step cursor"></i></span>
-                <h4 id="play-song" style="width: 7rem; font-size: 0.8rem;">Sooraj Dooba Hain..</h4>
-                <span  id="next" ><i class="fa-solid fa-forward-step cursor"></i></span>
-                <audio controls src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/0b/c0/8c/0bc08c58-274a-67d6-cab5-e5c72d1f1f34/mzaf_2846157791679155895.plus.aac.p.m4a" id="play-audio">
-                    
-                </audio>
-                <!-- <i class="fa-sharp fa-solid fa-circle-play cursor" id="play2"></i> -->
-                <!-- <i class="fa-solid fa-shuffle cursor"></i> -->
-                <!-- <i class="fa-solid fa-repeat cursor"></i> -->
-            </div>
-            <div style="display: flex; justify-content: center;">
-                
-                <!-- <input type="range" name="speed" id="speed" max="100" min="0" step="1" value="0"> -->
-            
-            </div>
+
+        <div id="info">
+          <div class="company">
+            <ul class="cursor comingsoon">
+              Company
+            </ul>
+            <li class="cursor comingsoon">About</li>
+            <li class="cursor comingsoon">Jobs</li>
+            <li class="cursor comingsoon">For the record</li>
+          </div>
+          <div class="company community">
+            <ul class="cursor comingsoon">
+              Communities
+            </ul>
+            <li class="cursor comingsoon">For Artists</li>
+            <li class="cursor comingsoon">Developers</li>
+            <li class="cursor comingsoon">Advertisings</li>
+          </div>
+          <div class="company community">
+            <ul class="cursor comingsoon">
+              Useful links
+            </ul>
+            <li class="cursor comingsoon">Support</li>
+            <li class="cursor comingsoon">Free Mobile App</li>
+          </div>
+
+          <div class="insta company">
+            <a href="https://www.instagram.com/" target="_blank"
+              ><i class="fa-brands fa-instagram cursor"></i
+            ></a>
+            <a href="https://twitter.com/?lang=en" target="_blank"
+              ><i class="fa-brands fa-twitter cursor"></i
+            ></a>
+            <a href="https://www.facebook.com/" target="_blank"
+              ><i class="fa-brands fa-facebook cursor"></i
+            ></a>
+          </div>
         </div>
+        <div class="border"></div>
+        <div class="copyright cursor">
+          <i class="fa-regular fa-copyright"></i>
+          2024 Vibemoji
+          <br />
+          <br />
+          <div>Made only for the learning purpose not for daily use</div>
+          <a href="https://open.spotify.com/" class="cursor" style="color: grey"
+            >Inspired by Spotify</a
+          >
+        </div>
+        <br />
+      </div>
+      <!-- https://is1-ssl.mzstatic.com/image/thumb/Music125/v4/f5/13/34/f51334f2-5e97-d82b-8fff-c935106d6450/mzm.joekxfas.jpg/100x100bb.jpg -->
+      <div class="page-content" id="footer">
+        <div id="play-icon">
+          <img
+            id="play-img"
+            src="https://is1-ssl.mzstatic.com/image/thumb/Music124/v4/2d/11/b9/2d11b994-b4fa-19eb-953d-70b472165e95/8903431566911_cover.jpg/100x100bb.jpg"
+            alt=""
+          />
+          <span id="prev"
+            ><i class="fa-solid fa-backward-step cursor"></i
+          ></span>
+          <h4 id="play-song" style="width: 7rem; font-size: 0.8rem">
+            Sooraj Dooba Hain..
+          </h4>
+          <span id="next"><i class="fa-solid fa-forward-step cursor"></i></span>
+          <audio
+            controls
+            src="https://audio-ssl.itunes.apple.com/itunes-assets/AudioPreview115/v4/0b/c0/8c/0bc08c58-274a-67d6-cab5-e5c72d1f1f34/mzaf_2846157791679155895.plus.aac.p.m4a"
+            id="play-audio"
+          ></audio>
+          <!-- <i class="fa-sharp fa-solid fa-circle-play cursor" id="play2"></i> -->
+          <!-- <i class="fa-solid fa-shuffle cursor"></i> -->
+          <!-- <i class="fa-solid fa-repeat cursor"></i> -->
+        </div>
+        <div style="display: flex; justify-content: center">
+          <!-- <input type="range" name="speed" id="speed" max="100" min="0" step="1" value="0"> -->
+        </div>
+      </div>
     </div>
-    <script type="text/javascript" src="script.js">
-    </script>
-</body>
+    <script type="text/javascript" src="script.js"></script>
+  </body>
 </html>
