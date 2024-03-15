@@ -1,7 +1,7 @@
 console.log("Made with love by Prince");
 let term = "";
 let totalsong = [];
-
+let temptotalsong =[];
 let defaultsong = [
     {
         song: 'Sooraj Dooba Hain (From "Roy")',
@@ -432,7 +432,7 @@ next.addEventListener(
     () => {
         if (searchBtnClicked) {
             currsong.value = 0;
-            playNextSong(totalsong, currsongD);
+            playNextSong(temptotalsong, currsongD);
         }
         else if (playliston) {
             currsong.value = 0;
@@ -448,7 +448,7 @@ next.addEventListener(
 playaudio.addEventListener("ended", () => {
     if (searchBtnClicked) {
         currsong.value = 0;
-        playNextSong(totalsong, currsongD);
+        playNextSong(temptotalsong, currsongD);
     } else if (playliston) {
         currsong.value = 0;
         playNextSong(playlistsongPlayed, currsongP);
@@ -696,6 +696,7 @@ let updateTerm = () => {
                 }
                 prevBtnPressed = false;
                 // wrong
+                temptotalsong=totalsong;
                 totalsong = [];
                 first=true;
                 return artists.map((result) => {
@@ -753,6 +754,8 @@ let updateTerm = () => {
                     child[i].addEventListener(
                         "click",
                         (event) => {
+                            if(firstTime)temptotalsong=totalsong;
+                            
                             // while (play.firstChild) {
                             //     play.removeChild(play.firstChild);
                             // }
