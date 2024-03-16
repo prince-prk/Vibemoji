@@ -1265,6 +1265,7 @@ audio::-webkit-media-controls-panel {
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: 25px;
+    box-shadow: 0 8px 16px 0 rgba(158, 157, 157, 0.2), 0 12px 40px 0 rgba(160, 160, 160, 0.19);
 }
 
 #emoji-container #cross {

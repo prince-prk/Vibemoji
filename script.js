@@ -475,18 +475,22 @@ const funemoji = () => {
   const emoji_container = document.getElementById("emoji-container");
   const cut = document.getElementById("cross");
   const emoji = document.getElementsByClassName("emoji");
+  const page = document.querySelector(".page");
+  page.style.display="none";
   emoji_container.style.display = "flex";
   for (let i = 0; i < emoji.length; i++) {
     emoji[i].addEventListener("click", () => {
       term = emojies[i];
       defaultsongs = true;
       emoji_container.style.display = "none";
+      page.style.display="flex";
       loader.style.display = "unset";
       updateTerm();
     });
   }
   cut.addEventListener("click", () => {
     emoji_container.style.display = "none";
+    page.style.display="flex";
   });
 };
 const emojiPicker = document.getElementById("emoimg");
