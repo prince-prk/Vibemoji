@@ -916,7 +916,7 @@ document.getElementById("prevbtn").addEventListener("click", () => {
 });
 
 document.getElementById("nextbtn").addEventListener("click", () => {
-  if (searchtermArray.length == 0 || searchtermArray.length == 1) {
+  if (searchtermArray.length == 0) {
     start();
     currterm = 0;
   } else {
