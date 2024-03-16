@@ -231,7 +231,7 @@ let scrollUp = () => {
       clearInterval(interval);
       return;
     }
-    main.scrollBy(0, -50);
+    main.scrollBy(0, -60);
     lastscrollheight = currheight;
   }, 20);
 };
@@ -468,6 +468,9 @@ let emojies = [
   "Most Liked Hindi Songs",
   "Sad Hindi Songs",
   "Bhajan",
+  "Hindi Party Songs",
+  "Desh Bhakti Songs",
+  "Sleeping Songs"
 ];
 
 //emoji-container
@@ -481,7 +484,7 @@ const funemoji = () => {
   for (let i = 0; i < emoji.length; i++) {
     emoji[i].addEventListener("click", () => {
       term = emojies[i];
-      defaultsongs = true;
+      searchBtnClicked = true;
       emoji_container.style.display = "none";
       page.style.display="flex";
       loader.style.display = "unset";

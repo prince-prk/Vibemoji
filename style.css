@@ -431,11 +431,11 @@ body {
 
 @media screen and (max-width: 326.9px) and (min-width: 150px) {
     body {
-        font-size: 11px;
+        font-size: 15px;
     }
 
     #main {
-        min-width: 240px;
+        height: 88vh !important;
     }
 
     .play {
@@ -466,6 +466,7 @@ body {
 
     #sr {
         display: none;
+        width: 100vw !important;
     }
 
     #spotify {
@@ -492,7 +493,9 @@ body {
         margin-bottom: 1rem;
         margin-top: 0.5rem;
     }
-
+    #searchTerm::placeholder{
+        font-size: 0.8rem;
+    }
     #play-icon img {
         width: 2.2rem !important;
         height: 2.2rem !important;
