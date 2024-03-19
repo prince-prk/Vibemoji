@@ -27,9 +27,9 @@ body {
         height: 23rem !important;
     }
 
-    #main {
+    /* #main {
         height: 84.8vh !important;
-    }
+    } */
 }
 
 @media screen and (max-width: 1050px) and (min-width: 1008px) {
@@ -48,9 +48,9 @@ body {
         min-width: 25rem !important;
     }
 
-    #main {
+    /* #main {
         height: 92.5vh !important;
-    }
+    } */
 }
 
 @media screen and (max-width: 1007px) and (min-width: 965px) {
@@ -69,9 +69,9 @@ body {
         width: 25rem !important;
     }
 
-    #main {
+    /* #main {
         height: 92.3vh !important;
-    }
+    } */
 }
 
 @media screen and (max-width: 964px) and (min-width: 872px) {
@@ -87,9 +87,9 @@ body {
         width: 20rem !important;
     }
 
-    #main {
+    /* #main {
         height: 92.4vh !important;
-    }
+    } */
 }
 
 @media screen and (max-width: 871px) and (min-width: 813px) {
@@ -105,9 +105,9 @@ body {
         width: 20rem !important;
     }
 
-    #main {
+    /* #main {
         height: 91.8vh !important;
-    }
+    } */
 }
 
 @media screen and (max-width: 810px) and (min-width: 694px) {
@@ -115,9 +115,9 @@ body {
         margin-right: 3.3rem;
     }
 
-    #main {
+    /* #main {
         height: 90.85vh !important;
-    }
+    } */
 
     /* .hid1 {
         display: none;
@@ -150,10 +150,6 @@ body {
 
     #sr {
         display: none;
-    }
-
-    #sidebar {
-        display: unset !important;
     }
 
     .searchTerm {
@@ -266,7 +262,7 @@ body {
     #main {
         margin-top: 0 !important;
         margin-right: 0 !important;
-        height: 89.8vh !important;
+        /* height: 89.8vh !important; */
     }
     
     #info{
@@ -281,7 +277,7 @@ body {
 
     #main {
         margin-top: 0 !important;
-        height: 88.8vh !important;
+        /* height: 88.8vh !important; */
         margin-right: 0 !important;
     }
 
@@ -423,7 +419,7 @@ body {
         right: 1rem !important;
     }
     #main{
-        height: 87vh !important;
+        /* height: 87vh !important; */
         margin-top: 0 !important;
         margin-right: 0 !important;
     }
@@ -434,9 +430,9 @@ body {
         font-size: 15px;
     }
 
-    #main {
+    /* #main {
         height: 88vh !important;
-    }
+    } */
 
     .play {
         margin-right: 2.9rem !important;
@@ -747,9 +743,9 @@ a {
     margin-top: 0.61rem;
     margin-right: 0.58rem;
     border-radius: 8px;
-    background-color: #1d1d1d;
+    background-color: #121212;
     position: relative;
-    height: 85vh;
+    margin-bottom: 5.58rem !important;
 }
 
 body #emojiPicker {
@@ -800,7 +796,7 @@ body #cross1 {
     justify-content: space-between;
     align-items: center;
     height: 4rem;
-    background-color: #121212;
+    background-color: #0a0a0a;
     width: 100%;
     margin-bottom: 0.1rem;
     overflow: hidden;
@@ -826,7 +822,7 @@ body #cross1 {
     margin-left: 0.4rem;
     font-size: 1.3em;
     border-radius: 50%;
-    background-color: rgb(10, 10, 10);
+    background-color: rgb(0, 0, 0);
     cursor: pointer;
 }
 
@@ -920,6 +916,7 @@ article audio {
     flex-wrap: wrap;
     min-height: 40vh;
     justify-content: space-evenly;
+    background-color: #121212;
 }
 
 .songs {
@@ -975,7 +972,7 @@ article {
     cursor: pointer;
     width: 10rem;
     height: 17rem;
-    background-color: #181717;
+    background-color: #00000045;
     padding-left: 1rem;
     border-radius: 8px;
     margin-bottom: 1rem;
@@ -992,7 +989,7 @@ article {
 }
 
 .top-list:hover {
-    background-color: #2d2d2d;
+    background-color: #1e1e1e;
     display: inline-block;
     z-index: 1;
 }
@@ -1062,14 +1059,14 @@ article p {
 .playPlaylist {
     display: flex;
     justify-content: space-between;
+    border-bottom: 1px solid grey;
     padding-left: 1rem;
     padding-right: 1rem;
     align-items: center;
-    background-color: #070707a6;
     width: 95% !important;
     height: 4rem;
     margin-top: 0.6rem;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     cursor: pointer;
 }
 
@@ -1082,8 +1079,12 @@ article p {
 }
 
 .playPlaylist img {
-    width: 2rem;
-    height: 2rem;
+    width: 3rem;
+    height: 3rem;
+}
+
+.playPlaylist h4 {
+    padding-left: 15px;
 }
 
 .playPlaylist p {
@@ -1092,7 +1093,6 @@ article p {
 }
 
 #info {
-    background-color: #1d1d1d;
     display: flex;
     overflow: hidden;
     justify-content: space-evenly;
@@ -1153,6 +1153,7 @@ article p {
     background: rgb(0, 0, 0);
     overflow: hidden;
     z-index: 5;
+    min-width: 257px;
     display: flex;
     flex-direction: column;
     justify-content: center !important;
@@ -1196,6 +1197,10 @@ article p {
 
 #speed::-webkit-slider-thumb {
     display: none;
+}
+
+.crosshair{
+    cursor: not-allowed;
 }
 
 audio{

@@ -4,7 +4,8 @@ let term = "";
 //fetching songs
 let totalsong = [];
 let temptotalsong = [];
-
+let loader = document.getElementById("loader");
+loader.style.display = "unset";
 // starting footer songs
 let defaultsong = [
   {
@@ -80,7 +81,6 @@ const playaudio = document.getElementById("play-audio"),
   // audioSource = document.createElement('source'),
   playimg = document.getElementById("play-img");
 var defaultsongs = true;
-let loader = document.getElementById("loader");
 
 //starting songs
 let spotify = [
@@ -236,6 +236,7 @@ let scrollUp = () => {
   }, 20);
 };
 function start() {
+  document.title="Vibemoji";
   document.getElementById("searchTerm").value = "";
   document.getElementById("searchTerm").style.border = "0.1rem solid #3c3c3c";
   defaultsongs = true;
@@ -285,6 +286,7 @@ function start() {
     }
   }
   a = prevPlayesSong.length - 1;
+  loader.style.display = "none";
 }
 start();
 
@@ -292,6 +294,7 @@ start();
 const comingsoon = document.querySelectorAll(".comingsoon");
 comingsoon.forEach((ele) => {
   ele.addEventListener("click", () => {
+    scrollUp();
     songs.innerText = "";
     const temp = document.createElement("div");
     temp.style.textAlign = "center";
@@ -372,10 +375,8 @@ let playlistsongPlayed = [];
 
 function playNextSong(tempSong, curr) {
   if (first) curr.value = curr.value + 1;
-  console.log(currsongP.value);
   a = prevPlayesSong.length - 1;
   let k = curr.value;
-  console.log(k);
   k = k % tempSong.length;
   curr.value = k;
   first = true;
@@ -516,6 +517,7 @@ const songPlay = (img, song, audio) => {
   else playsong.innerHTML = song;
   let cacheBuster = Date.now();
   playaudio.src = audio + "?timestamp=" + cacheBuster;
+  // playaudio.src = audio;
   playaudio.controls = true;
   // const icon1 = document.createElement('i');
   //   console.log(playsong.innerText);
@@ -638,7 +640,26 @@ async function playlistDiv(item) {
   });
 }
 let searchterm = false;
-function emptyPlaylist() {
+const playlistsave = () => {
+  while (songs.firstChild) {
+    songs.removeChild(songs.firstChild);
+  }
+  playlist = true;
+  const div = document.createElement("h2");
+  div.innerText = "Search Songs";
+  div.style.marginTop = "2rem";
+  document.getElementById("searchTerm").style.border = "0.2rem solid white";
+  document.getElementById("searchTerm").addEventListener(
+    "click",
+    () => {
+      searchTerm.style.border = "0.1rem solid #3c3c3c";
+    },
+    { once: true }
+  );
+  songs.appendChild(div);
+};
+async function emptyPlaylist() {
+  document.getElementById("playlist").style.backgroundColor="#242323";
   const temp = document.getElementById("playlist");
   const div1 = document.createElement("div");
   const div2 = document.createElement("div");
@@ -650,6 +671,7 @@ function emptyPlaylist() {
   div2.setAttribute("id", "p2");
   btn.setAttribute("id", "but");
   btn.classList.add("but", "cursor");
+  btn.addEventListener("click", playlistsave);
   temp.appendChild(div1);
   temp.appendChild(div2);
   temp.appendChild(btn);
@@ -686,6 +708,8 @@ let updateTerm = () => {
     fetch(url)
       .then((Response) => Response.json())
       .then((data) => {
+        const title=term.toLowerCase();
+        document.title=`Vibemoji - ${title[0].toUpperCase() + title.slice(1)}`;
         if (searchterm === false) {
           searchtermArray.push(term);
           currterm = searchtermArray.length - 1;
@@ -711,7 +735,7 @@ let updateTerm = () => {
         }
         prevBtnPressed = false;
         // wrong
-        temptotalsong = totalsong;
+        //temptotalsong = totalsong;
         totalsong = [];
         first = true;
         return artists.map((result) => {
@@ -809,14 +833,19 @@ let updateTerm = () => {
                   btn2.innerText = "Cancel";
                   btn2.style.width = "5rem";
                   btn2.setAttribute("class", "but");
-                  btn2.style.marginLeft = "0.8rem";
                   div.style.cursor = "pointer";
+                  const div3 = document.createElement("div");
                   div1.appendChild(div);
-                  div1.appendChild(btn1);
-                  div1.appendChild(btn2);
+                  div3.appendChild(btn1);
+                  div3.appendChild(btn2);
+                  div3.style.display="flex";
+                  div3.style.justifyContent="space-between";
+                  div3.style.gap="3px"
+                  div1.appendChild(div3)
                   div.setAttribute("class", "pldiv");
+                  document.getElementById("playlist").style.backgroundColor="transparent";
                   div1.style.padding = "0.8rem";
-                  div1.style.backgroundColor = "#363434";
+                  div1.style.backgroundColor = "#242323";
                   div1.style.borderRadius = "10px";
                   temp.appendChild(div1);
                   btn2.addEventListener("click", () => {
@@ -833,8 +862,7 @@ let updateTerm = () => {
 
                       playlistSong = {};
                       playlist = false;
-                      div1.removeChild(btn1);
-                      div1.removeChild(btn2);
+                      div1.removeChild(div3);
                       div1.setAttribute("id", "currPlaylist");
                       numberofPlaylist += 1;
                       playlistDiv(div.innerText);
@@ -850,11 +878,10 @@ let updateTerm = () => {
               if (playlist != true) {
               } else {
                 if (child[i].children[1].innerText in playlistSong) {
-                  child[i].style.backgroundColor = "#181616";
+                  child[i].style.backgroundColor = "#00000045";
                   delete playlistSong[child[i].children[1].innerText];
                 } else {
                   const cacheBuster = Date.now();
-                  console.log(child[i].children[1].innerHTML);
                   if (firstTime) currPlayname = child[i].children[1].innerHTML;
                   playlistSong[child[i].children[1].innerText] = {
                     img: child[i].childNodes[0].getAttribute("src"),
@@ -871,7 +898,7 @@ let updateTerm = () => {
                   //     audio:playaudio.src,
                   //     name:child[i].children[2].innerHTML
                   // })
-                  child[i].style.backgroundColor = "rgb(64,64,64)";
+                  child[i].style.backgroundColor = "#202020";
                 }
               }
               firstTime = false;
@@ -899,10 +926,11 @@ let updateTerm = () => {
 
 //prev page btn
 document.getElementById("prevbtn").addEventListener("click", () => {
+  loader.style.display = "unset";
   if (
     currterm <= 0 ||
     searchtermArray.length == 0 ||
-    searchtermArray.length == 1
+    searchtermArray.length == 1 || currterm===0
   ) {
     start();
     currterm = 0;
@@ -916,9 +944,11 @@ document.getElementById("prevbtn").addEventListener("click", () => {
 });
 
 document.getElementById("nextbtn").addEventListener("click", () => {
-  if (searchtermArray.length == 0) {
+  loader.style.display = "unset";
+  if (searchtermArray.length == 0 || currterm===0) {
     start();
-    currterm = 0;
+    if(currterm == 0)currterm=1;
+    else currterm = 0;
   } else {
     searchterm = true;
     currterm += 1;
@@ -962,25 +992,6 @@ heading.innerText = document.getElementById("searchTerm").value;
 songs.appendChild(heading);
 // let arry = Array.from(songs);
 
-const playlistsave = () => {
-  while (songs.firstChild) {
-    songs.removeChild(songs.firstChild);
-  }
-  playlist = true;
-  const div = document.createElement("h2");
-  div.innerText = "Search Songs";
-  div.style.marginTop = "2rem";
-  document.getElementById("searchTerm").style.border = "0.2rem solid white";
-  document.getElementById("searchTerm").addEventListener(
-    "click",
-    () => {
-      searchTerm.style.border = "0.1rem solid #3c3c3c";
-    },
-    { once: true }
-  );
-  songs.appendChild(div);
-};
-const create_playlist = document.getElementById("but");
-create_playlist.addEventListener("click", playlistsave);
+
 const plus = document.getElementById("plus");
 plus.addEventListener("click", playlistsave);
