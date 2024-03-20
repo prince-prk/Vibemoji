@@ -480,21 +480,25 @@ const funemoji = () => {
   const cut = document.getElementById("cross");
   const emoji = document.getElementsByClassName("emoji");
   const page = document.querySelector(".page");
-  page.style.display="none";
+  page.style.opacity="0.25";
+  page.addEventListener('click',()=>{
+    emoji_container.style.display = "none";
+    page.style.opacity="1";
+  },true)
   emoji_container.style.display = "flex";
   for (let i = 0; i < emoji.length; i++) {
     emoji[i].addEventListener("click", () => {
       term = emojies[i];
       searchBtnClicked = true;
       emoji_container.style.display = "none";
-      page.style.display="flex";
+      page.style.opacity="1";
       loader.style.display = "unset";
       updateTerm();
     });
   }
   cut.addEventListener("click", () => {
     emoji_container.style.display = "none";
-    page.style.display="flex";
+    page.style.opacity="1";
   });
 };
 const emojiPicker = document.getElementById("emoimg");
@@ -622,6 +626,7 @@ async function playlistDiv(item) {
 
   pldiv.map((it) => {
     it.addEventListener("click", () => {
+      if(event.target.id!="delete"){
       playlistsongPlayed = [];
       // console.log(child);
 
@@ -636,6 +641,31 @@ async function playlistDiv(item) {
           });
         }
       }
+    }
+    else{
+      console.log("Congrulation");
+      j = parseInt(it.innerText[13]);
+      j -= 1;
+      const r=j;
+      console.log(r);
+      const temp = document.getElementById("playlist");
+      if(temp.childNodes.length >= r+1){
+        playlistSongs.splice(r,1);
+        temp.removeChild(temp.childNodes[r]);
+        numberofPlaylist-=1;
+      }
+      const tempChild=temp.children;
+      //console.log(tempChild);
+      for(let i=0;i<tempChild.length;i++){
+        tempChild[i].firstChild.innerHTML=`  <i id="hi" class="fa-solid fa-music"></i> My Playlist @${i+1} <i id="delete" class="fa-regular fa-trash-can"></i>`;
+        console.log(tempChild[i].firstChild.innerText);
+        //it.innerText[13]='100';
+      }
+      if(playlistSongs.length==0){
+        start();
+        emptyPlaylist();
+      }
+    }
     });
   });
 }
@@ -658,9 +688,10 @@ const playlistsave = () => {
   );
   songs.appendChild(div);
 };
-async function emptyPlaylist() {
+function emptyPlaylist() {
   document.getElementById("playlist").style.backgroundColor="#242323";
   const temp = document.getElementById("playlist");
+  temp.style.marginTop="0.7rem";
   const div1 = document.createElement("div");
   const div2 = document.createElement("div");
   div1.innerText = "Create your first playlist";
@@ -710,7 +741,7 @@ let updateTerm = () => {
       .then((data) => {
         const title=term.toLowerCase();
         document.title=`Vibemoji - ${title[0].toUpperCase() + title.slice(1)}`;
-        if (searchterm === false) {
+        if (searchterm === false && playlist === false) {
           searchtermArray.push(term);
           currterm = searchtermArray.length - 1;
         } else {
@@ -813,7 +844,6 @@ let updateTerm = () => {
                   child[i].childNodes[3].childNodes[0].getAttribute("src")
                 );
               } else {
-                create_playlist.innerText = "Save";
                 const temp = document.getElementById("playlist");
                 if (numberofPlaylist == 1 && firstTime) {
                   while (temp.firstChild) {
@@ -823,8 +853,12 @@ let updateTerm = () => {
                 if (firstTime) {
                   const div = document.createElement("div");
                   const div1 = document.createElement("div");
-                  div.innerText = ` My Playlist @${numberofPlaylist}`;
-
+                      // i.innerHTML='delete'
+                      // console.log(i);
+                  div.innerHTML = `  <i id="hi" class="fa-solid fa-music"></i> My Playlist @${numberofPlaylist} `;
+                  div.style.display="flex";
+                  div.style.justifyContent="space-between"
+                  div.style.alignItems="center"
                   const btn1 = document.createElement("button");
                   btn1.innerText = "Save";
                   btn1.setAttribute("class", "but");
@@ -865,6 +899,13 @@ let updateTerm = () => {
                       div1.removeChild(div3);
                       div1.setAttribute("id", "currPlaylist");
                       numberofPlaylist += 1;
+                      const deletei= document.createElement('i');
+                      // i.innerHTML='delete'
+                      // console.log(i);
+                      deletei.classList.add("fa-regular","fa-trash-can");
+                      deletei.style.color="#ababab";
+                      deletei.setAttribute('id',"delete");
+                      div.appendChild(deletei);
                       playlistDiv(div.innerText);
                       start();
                       const a = document.getElementById("temp");
