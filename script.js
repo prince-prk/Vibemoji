@@ -918,13 +918,13 @@ let updateTerm = () => {
 
               if (playlist != true) {
               } else {
-                if (child[i].children[1].innerText in playlistSong) {
+                if ((child[i].children[1].innerText+i) in playlistSong) {
                   child[i].style.backgroundColor = "#00000045";
-                  delete playlistSong[child[i].children[1].innerText];
+                  delete playlistSong[child[i].children[1].innerText+i];
                 } else {
                   const cacheBuster = Date.now();
                   if (firstTime) currPlayname = child[i].children[1].innerHTML;
-                  playlistSong[child[i].children[1].innerText] = {
+                  playlistSong[child[i].children[1].innerText+i] = {
                     img: child[i].childNodes[0].getAttribute("src"),
                     song: child[i].children[1].innerHTML,
                     audio:
