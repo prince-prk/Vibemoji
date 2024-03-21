@@ -148,27 +148,27 @@ let spotify = [
     topic: "Sound of India",
     data: [
       {
-        song: "The Sound of Mu...",
+        song: "The Sound of Mumbai",
         img: "./img/img11.jfif",
         subheading: "The songs that define, unite and distinguish... ",
       },
       {
-        song: "The Sound of Del...",
+        song: "The Sound of Delhi",
         img: "./img/img12.jfif",
         subheading: "The songs that define, unite and distinguish...",
       },
       {
-        song: "The Sound of Ben...",
+        song: "The Sound of Bangalore",
         img: "./img/img13.jfif",
         subheading: "The songs that define, unite and distinguish...",
       },
       {
-        song: "The Sound of Ch...",
+        song: "The Sound of Chennai",
         img: "./img/img14.jfif",
         subheading: "The songs that define, unite and distinguish...",
       },
       {
-        song: "The Sound of Hy...",
+        song: "The Sound of Hyderabad",
         img: "./img/img15.jfif",
         subheading: "The songs that define, unite and distinguish...",
       },
@@ -495,6 +495,7 @@ const funemoji = () => {
   for (let i = 0; i < emoji.length; i++) {
     emoji[i].addEventListener("click", () => {
       term = emojies[i];
+      enterkeyPress = true;
       searchBtnClicked = true;
       emoji_container.style.display = "none";
       page.style.opacity = "1";
@@ -1011,26 +1012,32 @@ let updateTerm = () => {
 //prev page btn
 document.getElementById("prevbtn").addEventListener("click", () => {
   loader.style.display = "unset";
+  console.log(searchtermArray[currterm]);
   if (
     currterm <= 0 ||
     searchtermArray.length == 0 ||
     searchtermArray.length == 1 ||
-    currterm === 0
+    currterm === 0 || searchtermArray[currterm-1]=="start2"
   ) {
+    searchtermArray.push("start2");
     start();
     currterm = 0;
   } else {
-    // console.log("nikal")
+    if(searchtermArray[currterm-1]=="start2"){
+      start(); 
+    }
+    else{
     searchterm = true;
     currterm = currterm - 1;
     term = searchtermArray[currterm];
     updateTerm();
+    }
   }
 });
 
 document.getElementById("nextbtn").addEventListener("click", () => {
   loader.style.display = "unset";
-  if (searchtermArray.length == 0 || currterm === 0) {
+  if (searchtermArray.length == 0 || currterm === 0 || searchtermArray[currterm+1]=="start2") {
     start();
     if (currterm == 0) currterm = 1;
     else currterm = 0;
