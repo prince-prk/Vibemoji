@@ -236,7 +236,7 @@ let scrollUp = () => {
   }, 20);
 };
 function start() {
-  document.title="Vibemoji";
+  document.title = "Vibemoji";
   document.getElementById("searchTerm").value = "";
   document.getElementById("searchTerm").style.border = "0.1rem solid #3c3c3c";
   defaultsongs = true;
@@ -455,13 +455,15 @@ next.addEventListener(
 
 //song ended
 playaudio.addEventListener("ended", () => {
-  if (searchBtnClicked) {
-    currsong.value = 0;
-    playNextSong(temptotalsong, currsongD);
-  } else if (playliston) {
-    currsong.value = 0;
-    playNextSong(playlistsongPlayed, currsongP);
-  } else playNextSong(defaultsong, currsong);
+  if (playlist == false) {
+    if (searchBtnClicked) {
+      currsong.value = 0;
+      playNextSong(temptotalsong, currsongD);
+    } else if (playliston) {
+      currsong.value = 0;
+      playNextSong(playlistsongPlayed, currsongP);
+    } else playNextSong(defaultsong, currsong);
+  }
 });
 let emojies = [
   "Songs",
@@ -471,7 +473,7 @@ let emojies = [
   "Bhajan",
   "Hindi Party Songs",
   "Desh Bhakti Songs",
-  "Sleeping Songs"
+  "Sleeping Songs",
 ];
 
 //emoji-container
@@ -480,25 +482,29 @@ const funemoji = () => {
   const cut = document.getElementById("cross");
   const emoji = document.getElementsByClassName("emoji");
   const page = document.querySelector(".page");
-  page.style.opacity="0.25";
-  page.addEventListener('click',()=>{
-    emoji_container.style.display = "none";
-    page.style.opacity="1";
-  },true)
+  page.style.opacity = "0.25";
+  page.addEventListener(
+    "click",
+    () => {
+      emoji_container.style.display = "none";
+      page.style.opacity = "1";
+    },
+    true
+  );
   emoji_container.style.display = "flex";
   for (let i = 0; i < emoji.length; i++) {
     emoji[i].addEventListener("click", () => {
       term = emojies[i];
       searchBtnClicked = true;
       emoji_container.style.display = "none";
-      page.style.opacity="1";
+      page.style.opacity = "1";
       loader.style.display = "unset";
       updateTerm();
     });
   }
   cut.addEventListener("click", () => {
     emoji_container.style.display = "none";
-    page.style.opacity="1";
+    page.style.opacity = "1";
   });
 };
 const emojiPicker = document.getElementById("emoimg");
@@ -515,7 +521,7 @@ document.getElementById("cross1").addEventListener("click", () => {
   document.getElementById("emojiPicker").style.display = "none";
 });
 
-//footer songs 
+//footer songs
 const songPlay = (img, song, audio) => {
   if (song.length >= 15) playsong.innerHTML = song.substring(0, 15) + "...";
   else playsong.innerHTML = song;
@@ -626,46 +632,49 @@ async function playlistDiv(item) {
 
   pldiv.map((it) => {
     it.addEventListener("click", () => {
-      if(event.target.id!="delete"){
-      playlistsongPlayed = [];
-      // console.log(child);
+      if (event.target.id != "delete") {
+        playlistsongPlayed = [];
+        // console.log(child);
 
-      playPlaylist(it.innerText);
+        playPlaylist(it.innerText);
 
-      for (let i = 0; i < child.length; i++) {
-        if (child[0].childNodes[1].innerText) {
-          playlistsongPlayed.push({
-            img: child[i].childNodes[0].getAttribute("src"),
-            song: child[i].childNodes[1].innerText,
-            audio: child[i].childNodes[3].childNodes[0].getAttribute("src"),
-          });
+        for (let i = 0; i < child.length; i++) {
+          if (child[0].childNodes[1].innerText) {
+            playlistsongPlayed.push({
+              img: child[i].childNodes[0].getAttribute("src"),
+              song: child[i].childNodes[1].innerText,
+              audio: child[i].childNodes[3].childNodes[0].getAttribute("src"),
+            });
+          }
+        }
+      } else {
+        console.log("Congrulation");
+        j = parseInt(it.innerText[13]);
+        j -= 1;
+        const r = j;
+        console.log(r);
+        const temp = document.getElementById("playlist");
+        if (temp.childNodes.length >= r + 1) {
+          playlistSongs.splice(r, 1);
+          temp.removeChild(temp.childNodes[r]);
+          numberofPlaylist -= 1;
+        }
+        const tempChild = temp.children;
+        //console.log(tempChild);
+        for (let i = 0; i < tempChild.length; i++) {
+          tempChild[
+            i
+          ].firstChild.innerHTML = `  <i id="hi" class="fa-solid fa-music"></i> My Playlist @${
+            i + 1
+          } <i id="delete" class="fa-regular fa-trash-can"></i>`;
+          console.log(tempChild[i].firstChild.innerText);
+          //it.innerText[13]='100';
+        }
+        if (playlistSongs.length == 0) {
+          start();
+          emptyPlaylist();
         }
       }
-    }
-    else{
-      console.log("Congrulation");
-      j = parseInt(it.innerText[13]);
-      j -= 1;
-      const r=j;
-      console.log(r);
-      const temp = document.getElementById("playlist");
-      if(temp.childNodes.length >= r+1){
-        playlistSongs.splice(r,1);
-        temp.removeChild(temp.childNodes[r]);
-        numberofPlaylist-=1;
-      }
-      const tempChild=temp.children;
-      //console.log(tempChild);
-      for(let i=0;i<tempChild.length;i++){
-        tempChild[i].firstChild.innerHTML=`  <i id="hi" class="fa-solid fa-music"></i> My Playlist @${i+1} <i id="delete" class="fa-regular fa-trash-can"></i>`;
-        console.log(tempChild[i].firstChild.innerText);
-        //it.innerText[13]='100';
-      }
-      if(playlistSongs.length==0){
-        start();
-        emptyPlaylist();
-      }
-    }
     });
   });
 }
@@ -689,9 +698,9 @@ const playlistsave = () => {
   songs.appendChild(div);
 };
 function emptyPlaylist() {
-  document.getElementById("playlist").style.backgroundColor="#242323";
+  document.getElementById("playlist").style.backgroundColor = "#242323";
   const temp = document.getElementById("playlist");
-  temp.style.marginTop="0.7rem";
+  temp.style.marginTop = "0.7rem";
   const div1 = document.createElement("div");
   const div2 = document.createElement("div");
   div1.innerText = "Create your first playlist";
@@ -739,8 +748,10 @@ let updateTerm = () => {
     fetch(url)
       .then((Response) => Response.json())
       .then((data) => {
-        const title=term.toLowerCase();
-        document.title=`Vibemoji - ${title[0].toUpperCase() + title.slice(1)}`;
+        const title = term.toLowerCase();
+        document.title = `Vibemoji - ${
+          title[0].toUpperCase() + title.slice(1)
+        }`;
         if (searchterm === false && playlist === false) {
           searchtermArray.push(term);
           currterm = searchtermArray.length - 1;
@@ -809,7 +820,6 @@ let updateTerm = () => {
           songContainer.style.display = "flex";
           songContainer.style.flex = "wrap";
           songContainer.style.justifyContent = "space-evenly";
-
           totalsong.push({
             song: result.trackName,
             img: result.artworkUrl100,
@@ -821,15 +831,25 @@ let updateTerm = () => {
         let firstTime = true;
         scrollUp();
         for (let i = 0; i < child.length; i++) {
+          const play = document.createElement("i");
+          play.innerHTML =
+            '<i id="playi" class="fa-solid fa-circle-play" style="color: #3cda10;"></i>';
+          play.classList.add("playi");
+          child[i].appendChild(play);
+          play.style.display = "none";
+          child[i].addEventListener("mouseover", function () {
+            play.style.display = "unset";
+          });
+          child[i].addEventListener("mouseout", function () {
+            play.style.display = "none";
+          });
           child[i].addEventListener(
             "click",
             (event) => {
               if (firstTime) temptotalsong = totalsong;
-
               // while (play.firstChild) {
               //     play.removeChild(play.firstChild);
               // }
-
               currsongD.value = i;
               if (playlist != true) {
                 playliston = false;
@@ -844,6 +864,17 @@ let updateTerm = () => {
                   child[i].childNodes[3].childNodes[0].getAttribute("src")
                 );
               } else {
+                play.addEventListener("click", function () {
+                  if (!child[i].childNodes[3].paused) {
+                    child[i].childNodes[3].pause();
+                  } else {
+                    const audio = document.getElementsByTagName("audio");
+                    for (let i = 0; i < audio.length; i++) {
+                      audio[i].pause();
+                    }
+                    child[i].childNodes[3].play();
+                  }
+                });
                 const temp = document.getElementById("playlist");
                 if (numberofPlaylist == 1 && firstTime) {
                   while (temp.firstChild) {
@@ -853,12 +884,12 @@ let updateTerm = () => {
                 if (firstTime) {
                   const div = document.createElement("div");
                   const div1 = document.createElement("div");
-                      // i.innerHTML='delete'
-                      // console.log(i);
+                  // i.innerHTML='delete'
+                  // console.log(i);
                   div.innerHTML = `  <i id="hi" class="fa-solid fa-music"></i> My Playlist @${numberofPlaylist} `;
-                  div.style.display="flex";
-                  div.style.justifyContent="space-between"
-                  div.style.alignItems="center"
+                  div.style.display = "flex";
+                  div.style.justifyContent = "space-between";
+                  div.style.alignItems = "center";
                   const btn1 = document.createElement("button");
                   btn1.innerText = "Save";
                   btn1.setAttribute("class", "but");
@@ -872,12 +903,13 @@ let updateTerm = () => {
                   div1.appendChild(div);
                   div3.appendChild(btn1);
                   div3.appendChild(btn2);
-                  div3.style.display="flex";
-                  div3.style.justifyContent="space-between";
-                  div3.style.gap="3px"
-                  div1.appendChild(div3)
+                  div3.style.display = "flex";
+                  div3.style.justifyContent = "space-between";
+                  div3.style.gap = "3px";
+                  div1.appendChild(div3);
                   div.setAttribute("class", "pldiv");
-                  document.getElementById("playlist").style.backgroundColor="transparent";
+                  document.getElementById("playlist").style.backgroundColor =
+                    "transparent";
                   div1.style.padding = "0.8rem";
                   div1.style.backgroundColor = "#242323";
                   div1.style.borderRadius = "10px";
@@ -899,12 +931,12 @@ let updateTerm = () => {
                       div1.removeChild(div3);
                       div1.setAttribute("id", "currPlaylist");
                       numberofPlaylist += 1;
-                      const deletei= document.createElement('i');
+                      const deletei = document.createElement("i");
                       // i.innerHTML='delete'
                       // console.log(i);
-                      deletei.classList.add("fa-regular","fa-trash-can");
-                      deletei.style.color="#ababab";
-                      deletei.setAttribute('id',"delete");
+                      deletei.classList.add("fa-regular", "fa-trash-can");
+                      deletei.style.color = "#ababab";
+                      deletei.setAttribute("id", "delete");
                       div.appendChild(deletei);
                       playlistDiv(div.innerText);
                       start();
@@ -918,28 +950,39 @@ let updateTerm = () => {
 
               if (playlist != true) {
               } else {
-                if ((child[i].children[1].innerText+i) in playlistSong) {
-                  child[i].style.backgroundColor = "#00000045";
-                  delete playlistSong[child[i].children[1].innerText+i];
-                } else {
-                  const cacheBuster = Date.now();
-                  if (firstTime) currPlayname = child[i].children[1].innerHTML;
-                  playlistSong[child[i].children[1].innerText+i] = {
-                    img: child[i].childNodes[0].getAttribute("src"),
-                    song: child[i].children[1].innerHTML,
-                    audio:
-                      child[i].childNodes[3].childNodes[0].getAttribute("src") +
-                      "?timestamp=" +
-                      cacheBuster,
-                    name: child[i].children[2].innerText,
-                  };
-                  // playlistSong.push({
-                  //     img:playimg.src,
-                  //     song:playsong.innerHTML,
-                  //     audio:playaudio.src,
-                  //     name:child[i].children[2].innerHTML
-                  // })
-                  child[i].style.backgroundColor = "#202020";
+                const checked = document.createElement("i");
+                checked.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+                checked.classList.add("checked");
+                // if(event.target.classList!="playi")
+                if (event.target.id != "playi") {
+                  if (child[i].children[1].innerText + i in playlistSong) {
+                    child[i].style.backgroundColor = "#00000045";
+                    child[i].removeChild(child[i].childNodes[5]);
+                    delete playlistSong[child[i].children[1].innerText + i];
+                  } else {
+                    child[i].appendChild(checked);
+                    const cacheBuster = Date.now();
+                    if (firstTime)
+                      currPlayname = child[i].children[1].innerHTML;
+                    playlistSong[child[i].children[1].innerText + i] = {
+                      img: child[i].childNodes[0].getAttribute("src"),
+                      song: child[i].children[1].innerHTML,
+                      audio:
+                        child[i].childNodes[3].childNodes[0].getAttribute(
+                          "src"
+                        ) +
+                        "?timestamp=" +
+                        cacheBuster,
+                      name: child[i].children[2].innerText,
+                    };
+                    // playlistSong.push({
+                    //     img:playimg.src,
+                    //     song:playsong.innerHTML,
+                    //     audio:playaudio.src,
+                    //     name:child[i].children[2].innerHTML
+                    // })
+                    child[i].style.backgroundColor = "#64636345";
+                  }
                 }
               }
               firstTime = false;
@@ -971,7 +1014,8 @@ document.getElementById("prevbtn").addEventListener("click", () => {
   if (
     currterm <= 0 ||
     searchtermArray.length == 0 ||
-    searchtermArray.length == 1 || currterm===0
+    searchtermArray.length == 1 ||
+    currterm === 0
   ) {
     start();
     currterm = 0;
@@ -986,9 +1030,9 @@ document.getElementById("prevbtn").addEventListener("click", () => {
 
 document.getElementById("nextbtn").addEventListener("click", () => {
   loader.style.display = "unset";
-  if (searchtermArray.length == 0 || currterm===0) {
+  if (searchtermArray.length == 0 || currterm === 0) {
     start();
-    if(currterm == 0)currterm=1;
+    if (currterm == 0) currterm = 1;
     else currterm = 0;
   } else {
     searchterm = true;
@@ -1009,10 +1053,10 @@ document.getElementById("searchTerm").addEventListener("keydown", (event) => {
   }
 });
 
-
 const searchBtn = document.getElementById("searchTermBtn");
 const smallSearch = document.getElementById("search");
 smallSearch.addEventListener("click", () => {
+  document.getElementById("searchTerm").focus();
   const searchTerm = document.getElementById("searchTerm");
   searchTerm.style.border = "0.2rem solid white";
   setTimeout(() => {
@@ -1032,7 +1076,6 @@ const heading = document.createElement("h4");
 heading.innerText = document.getElementById("searchTerm").value;
 songs.appendChild(heading);
 // let arry = Array.from(songs);
-
 
 const plus = document.getElementById("plus");
 plus.addEventListener("click", playlistsave);
